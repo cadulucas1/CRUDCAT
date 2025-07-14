@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<html lang="pt-br">
+<?php
+    $css = ["/css/vendedor/CadastroVendedor_1.css"];
+    require_once('./utils/head.php');
+?>
 <body>
     <!-- From Uiverse.io by michael_8553 --> 
     <div class="button-container">
