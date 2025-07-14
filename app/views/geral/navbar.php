@@ -7,28 +7,28 @@
 ?>
 </head>
 <body>
-    <!-- From Uiverse.io by michael_8553 --> 
-    <div class="button-container">
+    <div class="navbar_button_container">
+        <div class="navbar_left">
+            <img src="./public/images/icons/icon_logo_minicomunica.svg" alt="Logo da empresa" class="navbar_logo">
+        </div>
 
-        <button class="button">
-            <img src="./public/images/icons/icon_home.svg" alt="">
-        </button>
-
-        <button class="button">
-            <img src="./public/images/icons/icon_search.svg" alt="">
-        </button>
-
-        <button class="button">
-            <img src="./public/images/icons/icon_headset.svg" alt="">
-        </button>
-
-        <button class="button">
-            <img src="./public/images/icons/icon_ticket.svg" alt="">
-        </button>
-
-        <button class="button">
-            <img src="./public/images/icons/icon_user.svg" alt="">
-        </button>
+        <div class="navbar_right">
+            <button class="navbar_button">
+                <img src="./public/images/icons/icon_home.svg" alt="">
+            </button>
+            <button class="navbar_button">
+                <img src="./public/images/icons/icon_search.svg" alt="">
+            </button>
+            <button class="navbar_button">
+                <img src="./public/images/icons/icon_headset.svg" alt="">
+            </button>
+            <button class="navbar_button">
+                <img src="./public/images/icons/icon_ticket.svg" alt="">
+            </button>
+            <button class="navbar_button">
+                <img src="./public/images/icons/icon_user.svg" alt="">
+            </button>
+        </div>
     </div>
 </body>
 </html>
