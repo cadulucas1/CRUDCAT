@@ -1,0 +1,8 @@
+# Environments
+!config.env.ex
+config.env
+.env
+.venv
+env/
+venv/
+ENV/
