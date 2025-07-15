@@ -31,7 +31,7 @@ CREATE TABLE loja IF NOT EXISTS loja(
     endereco_loja VARCHAR(255) NOT NULL,
 )
 
-CREATE TABLE loja_produto IF NOT EXISTS loja(
+CREATE TABLE loja_produto IF NOT EXISTS loja_produto(
     id_loja_produto BIGINT AUTO_INCREMENT PRIMARY KEY,
     id_loja BIGINT NOT NULL,
     id_produto BIGINT NOT NULL,
