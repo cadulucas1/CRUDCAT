@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-br">
 <?php
-    $css = ['/css/navbar.css'];
+    $css = ['/css/geral/home.css', '/css/geral/navbar.css'];
     require_once('./utils/head.php')
 ?>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 </head>
 <body>
-    <h1>ESTAMOS NA HOME!!!</h1>
+    <?php
+        include './app/components/php/navbar.php';
+    ?>
+    <?php 
+        // $topBarClass = 'estendida'; 
+        // include './app/components/php/topbar.php'; 
+    ?>
+    <main class="f-column" id="main-content">
+        <div class="store-div">
+            <div></div>
+        </div>
+    </main>
+    
 </body>
-<?php
-    include './app/components/php/navbar.php';
-?>
+<script type="module" src="./public/js/geral/home.js"></script>
 </html>
