@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,40..340100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --LaranjaBase: #F37F00;
+    --LaranjaEscuro: #DC5A0C;
+    --AmareloMel: #FABA4A;
+    --LaranjaMaisFeliz: #FF6600;
+}
+
+body {
+    background-color: #F2F2F2;
+}
+
+main {
+    padding: 8px;
+}
+
+.f-column {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.f-row {
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.top-bar {
+    width: 100%;
+    background-color: var(--LaranjaEscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 16px;
+    padding-bottom: 24px;
+    border-radius: 0 0 40px 40px;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.estendida {
+    padding-top: 32px;
+    padding-bottom: 112px;
+}
+
+.btn-base {
+    width: 100%;
+    background-color: var(--LaranjaEscuro);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    color: #F2F2F2;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all .3s ease;
+    &:hover {
+        cursor: pointer;
+        background-color: #F37F00;
+        transform: translateY(-4px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (min-width: 768px) {
+    .top-bar-favicon {
+        width: 120px;
+    }
+    .top-bar-brand-name {
+        width: calc(120px + 10%);
+    }
+
+    main {
+        padding: 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .top-bar-favicon {
+        width: 160px;
+    }
+    .top-bar-brand-name {
+        width: calc(160px + 10%);
+    }
+    .top-bar {
+        gap: 24px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .top-bar-favicon {
+        width: 180px;
+    }
+    .top-bar-brand-name {
+        width: calc(180px + 10%);
+    }
+}
