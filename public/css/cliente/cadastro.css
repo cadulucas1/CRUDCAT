@@ -1,0 +1,83 @@
+ * {
+     box-sizing: border-box;
+ }
+
+ body {
+     margin: 0;
+     padding: 0;
+     font-family: "Segoe UI", sans-serif;
+     background-color: #f4f4f4;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+ }
+
+ .cadastro-card {
+     background-color: #fff;
+     align-items: center;
+     display: flex;
+     justify-content: center;
+     border-radius: 10px;
+     padding: 1.5rem;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+     height: 480px;
+     width: 100%;
+     max-width: 370px;
+     ;
+ }
+
+ .login-title {
+     display: flex;
+     justify-content: center;
+ }
+
+ .cadastro-card h2 {
+     text-align: center;
+     margin-bottom: 1.2rem;
+     font-size: 1.5rem;
+     color: #333;
+ }
+
+
+ .cadastro-btn {
+     width: 100%;
+     background-color: var(--LaranjaEscuro);
+     color: white;
+     border: none;
+     padding: 0.8rem;
+     border-radius: 8px;
+     font-size: 1rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+     transition: background 0.3s;
+ }
+
+ .cadastro-btn i {
+     margin-left: 0.5rem;
+ }
+
+ .cadastro-btn:hover {
+     background-color: #b34808;
+ }
+
+ .btn-icon {
+     width: 18px;
+     height: 18px;
+     margin-right: 8px;
+ }
+
+ .input-icon {
+     width: 20px;
+     height: 20px;
+     margin-right: 0.6rem;
+     opacity: 0.7;
+ }
+
+ @media (min-width: 600px) {
+     .cadastro-card {
+         padding: 2rem;
+     }
+ }
