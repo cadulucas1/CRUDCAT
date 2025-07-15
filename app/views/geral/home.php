@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <?php
-    $css = [];
+    $css = ['/css/navbar.css'];
     require_once('./utils/head.php')
 ?>
     <meta charset="UTF-8">
@@ -12,4 +12,7 @@
 <body>
     <h1>ESTAMOS NA HOME!!!</h1>
 </body>
+<?php
+    include './app/components/php/navbar.php';
+?>
 </html>
