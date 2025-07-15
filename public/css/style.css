@@ -19,6 +19,7 @@ body {
 
 main {
     padding: 8px;
+    margin-top: 64px;
 }
 
 .f-column {
@@ -68,7 +69,7 @@ main {
     }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .top-bar-favicon {
         width: 120px;
     }
@@ -78,10 +79,11 @@ main {
 
     main {
         padding: 32px;
+        margin-top: 0;
     }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
     .top-bar-favicon {
         width: 160px;
     }
@@ -93,7 +95,7 @@ main {
     }
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
     .top-bar-favicon {
         width: 180px;
     }
