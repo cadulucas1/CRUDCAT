@@ -10,4 +10,8 @@ class GeralController extends RenderView {
         $this->loadView('geral/navbar' ,[]);
     }
 
+    public function perfil_loja() {
+        $this->loadView('geral/perfil_loja' ,[]);
+    }
+
 }
