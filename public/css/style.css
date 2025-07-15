@@ -20,7 +20,7 @@ body {
 }
 
 main {
-    padding: 8px;
+    padding: 32px 176px;
     margin-top: 64px;
 }
 
@@ -37,7 +37,6 @@ main {
 .top-bar {
     width: 100%;
     background-color: var(--LaranjaEscuro);
-    display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 16px;
@@ -45,11 +44,48 @@ main {
     border-radius: 0 0 40px 40px;
     flex-direction: column;
     gap: 12px;
+    visibility: hidden;
+    display: none;
 }
 
 .estendida {
     padding-top: 32px;
     padding-bottom: 112px;
+}
+
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+.input-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.6rem;
+    opacity: 0.7;
+}
+
+.input-group {
+    display: flex;
+    width: 334px;
+    max-width: 100%;
+    align-items: center;
+    background: #f0f0f0;
+    color: #CDCDCD;
+    border-radius: 8px;
+    border: 2px solid var(--LaranjaBase);
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+    font-size: 1rem;
 }
 
 .btn-base {
@@ -63,12 +99,115 @@ main {
     font-size: 16px;
     font-weight: 600;
     transition: all .3s ease;
+
     &:hover {
         cursor: pointer;
         background-color: #F37F00;
         transform: translateY(-4px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
+}
+
+.store-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title-store {
+  color: var(--LaranjaMaisFeliz);
+  margin-bottom: 16px;
+}
+
+/* Card Loja */
+
+.card-result {
+  background-color: #FFD8C7;
+  border-radius: 10px;
+  border: #FF6600 2px solid;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%; 
+}
+
+.image-loja {
+  width: 100px;
+  height: 100px;
+  background-color: #f0f0f0; 
+  border-radius: 50%;
+  margin-right: 15px;
+  flex-shrink: 0; 
+  display: flex;
+  overflow: hidden;
+}
+
+.dados-loja {
+  flex-grow: 1; 
+}
+
+.loja-nome {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0px 0px 15px 0px;
+  color: #333;
+}
+
+.loja-endereco,
+.loja-status,
+.loja-horario {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    color: #292929;
+    margin-top: 8px;;
+    margin-bottom: 1px;
+    margin-left: 3px;
+}
+
+.loja-status{
+  margin-left: 4px;
+}
+
+.loja-horario{
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+
+.dados-icone {
+  width: 100%; 
+}
+
+#icon-localizacao{
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+#icon-status{
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+}
+
+#icon-horario{
+  width: 20px;
+  height: 20px;
+  margin-right: 9px;
+}
+
+.status-Aberto {
+  color: #28a745; 
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+.status-Fechado {
+  color: #dc3545; 
+  font-weight: bold;
+  margin-left: 2px;
 }
 
 /* TOAST (MENSAGEM) */
@@ -108,6 +247,7 @@ main {
     list-style-type: none;
     font-family: Jost;
     color: var(--content-color);
+    
   }
   
   /* Notification Item */
@@ -313,17 +453,42 @@ main {
     }
   }
 
+@media (max-width: 425px) {
+  .card-result {
+    flex-direction: column;
+    gap: 16px;
+    * {
+      margin: 0;
+    }
+
+    .dados-loja {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
     .top-bar-favicon {
         width: 120px;
     }
+
     .top-bar-brand-name {
         width: calc(120px + 10%);
     }
 
     main {
-        padding: 32px;
+        padding: 8px;
+        padding-top: 24px;
         margin-top: 0;
+        margin-bottom: 64px;
+
+    }
+
+    .top-bar {
+      visibility: visible;
+      display: flex;
     }
 }
 
@@ -331,11 +496,17 @@ main {
     .top-bar-favicon {
         width: 160px;
     }
+
     .top-bar-brand-name {
         width: calc(160px + 10%);
     }
+
     .top-bar {
         gap: 24px;
+    }
+
+    main {
+      padding: 24px 80px;
     }
 }
 
@@ -343,6 +514,7 @@ main {
     .top-bar-favicon {
         width: 180px;
     }
+
     .top-bar-brand-name {
         width: calc(180px + 10%);
     }

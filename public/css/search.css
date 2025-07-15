@@ -39,16 +39,25 @@
 }
 .search-button {
   color: #F37F00;
-  width: 45px;
-  max-width: 60px;
+  height: 38px;
   background: none;
   border: none;
   cursor: pointer;
   vertical-align: middle;
+  background-color: #fff;
+  border: #F37F00 solid 2px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  transition: all .3s ease;
+  padding: 6px;
+  * {
+    transition: all .3s ease;
+  }
 }
 
 /* hover Anna */
-.search-button:hover {
+
+.search-button:hover img {
   transform: scale(1.1) rotate(5deg); 
   filter: brightness(1.2); 
 }
@@ -76,6 +85,8 @@ ul{
   align-items: center; 
   gap: 20px;
   margin-top: 30px;
+  margin-bottom: 64px;
+
 }
 
 .card-result {
@@ -91,12 +102,14 @@ ul{
 }
 
 .image-loja {
-  width: 100px; /* Tamanho do círculo da imagem */
+  width: 100px;
   height: 100px;
-  background-color: #f0f0f0; /* Cor de fundo para o placeholder */
+  background-color: #f0f0f0; 
   border-radius: 50%;
   margin-right: 15px;
-  flex-shrink: 0; /* Evita que o placeholder encolha */
+  flex-shrink: 0; 
+  display: flex;
+  overflow: hidden;
 }
 
 .dados-loja {
@@ -153,14 +166,20 @@ ul{
   margin-right: 9px;
 }
 
-.status-aberto {
+.status-Aberto {
   color: #28a745; 
   font-weight: bold;
   margin-left: 2px;
 }
 
-.status-fechado {
+.status-Fechado {
   color: #dc3545; 
   font-weight: bold;
   margin-left: 2px;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    margin-top: 64px;
+  }
 }

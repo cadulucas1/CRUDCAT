@@ -10,7 +10,7 @@ function renderProductCard(p) {
         ${isPromo
           ? `<div class="promo-value">${discount}</div>`
           : ''}
-        <img src="${p.image}" alt="${p.title}">
+        <img src="https://placehold.co/400" alt="${p.title}">
         <div class="product-title">
           ${p.title}
           <div class="product-status">• ${p.status}</div>
