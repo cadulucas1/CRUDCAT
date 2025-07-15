@@ -14,7 +14,7 @@
       // $topBarClass = 'estendida'; 
       include './app/components/php/topbar.php'; 
   ?>
-  <main class="f-column" id="main-content">
+  <div class="page-container">
     <form class="form-suporte">
       <div class="div-titulo-suporte">
         <h1 class="titulo-suporte">Suporte</h1>
@@ -34,7 +34,6 @@
       </button>
 
     </form>
-  </main>
-    
+  </div>
 </body>
 </html>

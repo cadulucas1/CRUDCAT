@@ -1,4 +1,13 @@
+.page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
 .form-suporte{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +36,8 @@
 
 .div-input-assunto, .div-input-mensagem {
     width: 100%;
-    margin-top: 5%;
+    display: flex;
+    margin-top: 5px;
 }
 
 
@@ -74,9 +84,22 @@
 .icon-mensagem{
     width: 20px;
     height: 20px;
-    margin-left: 2%;
+    margin-left: 8px;
 }
 
 .div-btn-enviar-mensagem{
     margin-top: 10px;
+}
+
+@media (min-width: 769px) {
+    .page-container {
+        margin-top: 70px;
+    }
+    .titulo-suporte{
+        font-size: 26px;
+}
+
+.texto-suporte{
+    font-size: 17px;
+}
 }
