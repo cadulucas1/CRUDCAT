@@ -1,0 +1,105 @@
+.page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.form-suporte{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: auto;
+}
+
+.div-titulo-suporte{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.titulo-suporte{
+    font-size: 25px;
+    color: var(--LaranjaMaisFeliz);
+    font-weight: 600;
+    margin-top: 20px;   
+    margin-bottom: 10px;
+}
+
+.texto-suporte{
+    font-size: 16px;
+    color: var(--CinzaEscuro);
+}
+
+.div-input-assunto, .div-input-mensagem {
+    width: 100%;
+    display: flex;
+    margin-top: 5px;
+}
+
+
+.input-assunto, .input-mensagem{
+    width: 100%;
+    border: 2px solid #F37F00; 
+    border-radius: 5px; 
+    padding: 8px 12px; 
+    font-size: 1em; 
+    outline: none;
+    margin-top: 20px;
+}
+
+.input-mensagem{
+    height: 200px;
+    margin-top: 10px;
+}
+
+.input-mensagem::placeholder{
+    display: flex;
+    top: 20px;
+}
+
+.btn-enviar-mensagem{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    place-items: center;
+    background-color: var(--LaranjaMaisFeliz);
+    border: none;
+    border-radius: 5px; 
+    padding: 5px 20px;
+    outline: none;
+    color: white;
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .5px;
+    cursor: pointer;
+}
+
+.icon-mensagem{
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+}
+
+.div-btn-enviar-mensagem{
+    margin-top: 10px;
+}
+
+@media (min-width: 769px) {
+    .page-container {
+        margin-top: 70px;
+    }
+    .titulo-suporte{
+        font-size: 26px;
+}
+
+.texto-suporte{
+    font-size: 17px;
+}
+}
