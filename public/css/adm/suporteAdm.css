@@ -1,0 +1,143 @@
+.page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px 20px 20px;
+}
+
+.dados-chamado {
+    width: 100%;
+}
+
+.div-dados-cliente {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.chamado-codigo, .chamado-cliente, .chamado-data {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.codigo {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.codigo, .nome-cliente, .data {
+    color:var(--LaranjaMaisFeliz);
+}
+
+.assunto, .mensagem {
+    display: flex;
+    justify-content: start; 
+    width: 100%; 
+    border: 1px solid var(--LaranjaBase);
+    border-radius: 5px;
+    box-sizing: border-box; 
+    margin-bottom: 20px;
+    color: var(--CinzaEscuro);
+    overflow: auto; 
+}
+
+.assunto{
+    height: 50px;
+    align-items: center;
+    min-height: 50px; 
+    display: flex;
+}
+
+.div-assunto-mensagem h3 {
+    font-size: 14px;
+    padding: 10px 10px 10px 10px;
+    font-weight: normal;
+}
+
+.assunto-texto{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.div-assunto-mensagem .mensagem {
+    min-height: 120px; 
+}
+
+.div-assunto-mensagem span.mensagem-texto {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.titulo-resposta{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-bottom: 15px;
+    color: var(--CinzaEscuro)
+}
+
+#responder {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--LaranjaMaisFeliz);
+}
+
+.form-suporte-adm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textarea-resposta{
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    padding: 15px;
+    border: 1px solid var(--LaranjaBase); 
+    border-radius: 5px;
+    box-sizing: border-box; 
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--CinzaEscuro);
+    min-height: 120px;
+    
+}
+
+.btn-enviar-mensagem {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    place-items: center;
+    background-color: var(--LaranjaMaisFeliz);
+    border: none;
+    border-radius: 5px; 
+    padding: 5px 20px;
+    outline: none;
+    color: white;
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .5px;
+    cursor: pointer;
+}
+.icon-mensagem{
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+}
+.btn-enviar-mensagem:hover {
+    background-color: var(--LaranjaClaro);
+}
+
+@media (min-width: 769px) {
+    .page-container {
+        margin-top: 70px;
+    }
+}
+
+
