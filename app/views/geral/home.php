@@ -5,18 +5,21 @@
     require_once('./utils/head.php')
 ?>
 </head>
+
 <body>
     <?php
         include './app/components/php/navbar.php';
     ?>
     <?php 
         // $topBarClass = 'estendida'; 
-        // include './app/components/php/topbar.php'; 
+        include './app/components/php/topbar.php'; 
     ?>
     <main class="f-column" id="main-content">
-        <div class="store-div">
-            <div></div>
-        </div>
+        <h2 class="title-store">
+            Lojas Seguidas
+        </h2>
+        <ul class="store-div">
+        </ul>
     </main>
     
 </body>
