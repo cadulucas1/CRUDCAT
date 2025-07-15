@@ -5,12 +5,14 @@
  body {
      margin: 0;
      padding: 0;
-     font-family: "Segoe UI", sans-serif;
      background-color: #f4f4f4;
      display: flex;
      justify-content: center;
      align-items: center;
      min-height: 100vh;
+     flex-direction: column;
+     justify-content: flex-start;
+     gap: 64px;
  }
 
  .cadastro-card {
@@ -74,6 +76,12 @@
      height: 20px;
      margin-right: 0.6rem;
      opacity: 0.7;
+ }
+
+ @media (min-width: 768px) {
+    body {
+        justify-content: center;
+    }
  }
 
  @media (min-width: 600px) {

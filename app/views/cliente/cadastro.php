@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-</head>
+<html lang="pt-br">
 <?php
-$css = ['/css/cliente/cadastro.css'];
+$css = ['/css/cliente/cadastro.css', '/css/geral/navbar.css'];
 require_once('./utils/head.php')
 ?>
 
 <body>
+    <?php
+        include './app/components/php/navbar.php';
+        include './app/components/php/topbar.php'; 
+    ?>
     <div class="cadastro-card">
         <form>
             <h2 class="cadas    tro-title">Cadastre-se</h2>
