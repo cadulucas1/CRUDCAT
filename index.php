@@ -23,4 +23,5 @@
     });
 
     $core = new Core();
+
     $core -> run($routes);
