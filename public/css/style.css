@@ -11,6 +11,8 @@
     --LaranjaEscuro: #DC5A0C;
     --AmareloMel: #FABA4A;
     --LaranjaMaisFeliz: #FF6600;
+    --vermelho: #D73232;
+
 }
 
 body {
@@ -18,7 +20,7 @@ body {
 }
 
 main {
-    padding: 8px;
+    padding: 32px 176px;
     margin-top: 64px;
 }
 
@@ -43,6 +45,8 @@ main {
     border-radius: 0 0 40px 40px;
     flex-direction: column;
     gap: 12px;
+    visibility: hidden;
+    display: none;
 }
 
 .estendida {
@@ -69,6 +73,367 @@ main {
     }
 }
 
+.store-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title-store {
+  color: var(--LaranjaMaisFeliz);
+  margin-bottom: 16px;
+}
+
+/* Card Loja */
+
+.card-result {
+  background-color: #FFD8C7;
+  border-radius: 10px;
+  border: #FF6600 2px solid;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%; 
+}
+
+.image-loja {
+  width: 100px;
+  height: 100px;
+  background-color: #f0f0f0; 
+  border-radius: 50%;
+  margin-right: 15px;
+  flex-shrink: 0; 
+  display: flex;
+  overflow: hidden;
+}
+
+.dados-loja {
+  flex-grow: 1; 
+}
+
+.loja-nome {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0px 0px 15px 0px;
+  color: #333;
+}
+
+.loja-endereco,
+.loja-status,
+.loja-horario {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    color: #292929;
+    margin-top: 8px;;
+    margin-bottom: 1px;
+    margin-left: 3px;
+}
+
+.loja-status{
+  margin-left: 4px;
+}
+
+.loja-horario{
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+
+.dados-icone {
+  width: 100%; 
+}
+
+#icon-localizacao{
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+#icon-status{
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+}
+
+#icon-horario{
+  width: 20px;
+  height: 20px;
+  margin-right: 9px;
+}
+
+.status-Aberto {
+  color: #28a745; 
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+.status-Fechado {
+  color: #dc3545; 
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* TOAST (MENSAGEM) */
+
+.toast-container {
+    position: absolute;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    right: 0;
+    background-color: red;
+  }
+  
+  /* From Uiverse.io by xerith_8140 */ 
+  /* Notification container */
+  
+  .notification-container {
+    /* Position top left */
+  
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 1000;
+    max-width: 256px;
+    width: 100%;
+  
+    --content-color: white;
+    --background-color: var(--cinza);
+    --font-size-content: 16px;
+    --icon-size: 24px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    list-style-type: none;
+    font-family: Jost;
+    color: var(--content-color);
+    
+  }
+  
+  /* Notification Item */
+  
+  .notification-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 1em;
+    max-height: fit-content;
+    min-height: 40px;
+    overflow: hidden;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: rgba(111, 111, 111, 0.2) 0px 8px 24px;
+    background-color: var(--background-color);
+    transition: all 250ms ease;
+    max-width: 256px;
+  }
+  
+  .notification-item svg {
+    transition: 250ms ease;
+  }
+  
+  .notification-item:hover {
+    transform: scale(1.01);
+  }
+  
+  .notification-item:active {
+    transform: scale(1.05);
+  }
+  
+  .notification-item .notification-close:hover svg {
+    filter: brightness(.8);
+  }
+  
+  .notification-item .notification-close:active svg {
+    transform: scale(1.1);
+  }
+  
+  /* Notification Icons */
+  
+  .notification-item .notification-close {
+    padding: 2px;
+    border-radius: 5px;
+    transition: all 250ms;
+  }
+  
+  .notification-container svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    color: var(--content-color);
+  }
+  
+  .notification-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Successo */
+  
+  .success {
+    color: #FFF;
+    background-color:var(--LaranjaEscuro);
+  }
+  
+  .success svg {
+    color: #FFF;
+  }
+  
+  .success .notification-progress-bar {
+    background-color: #FFF;
+  }
+  
+  .success:hover {
+    background-color: var(--LaranjaBase);
+  }
+  
+  .notification-item.success .notification-close:hover {
+    background-color: var(--LaranjaMaisFeliz);
+  }
+  
+  /* Info */
+  
+  .info {
+    color: white;
+    background-color: #a2c6f1;
+  }
+  
+  .info svg {
+    color: white;
+  }
+  
+  .info .notification-progress-bar {
+    background-color: white;
+  }
+  
+  .info:hover {
+    background-color: #84b1e9;
+  }
+  
+  .notification-item.info .notification-close:hover {
+    background-color: #5485a394;
+  }
+  
+  /* Alerta */
+  
+  .warning {
+    color: #535353;
+    background-color: #ffe57e;
+  }
+  
+  .warning svg {
+    color: #535353;
+  }
+  
+  .warning .notification-progress-bar {
+    background-color: #535353;
+  }
+  
+  .warning:hover {
+    background-color: #ffde59;
+  }
+  
+  .notification-item.warning .notification-close:hover {
+    background-color: #ffffff96;
+  }
+  
+  /* Erro */
+  
+  .error {
+    color: var(--content-color);
+    background-color: var(--vermelho);
+  }
+  
+  .error svg {
+    color: var(--content-color);
+  }
+  
+  .error .notification-progress-bar {
+    background-color: white;
+  }
+  
+  .error:hover {
+    background-color: #ff5f5f;
+  }
+  
+  .notification-item.error .notification-close:hover {
+    background-color: #fd00007e;
+  }
+  
+  /* Notification content */
+  
+  .notification-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5em;
+  }
+  
+  .notification-text {
+    font-size: var(--font-size-content);
+    user-select: none;
+  }
+  
+  .notification-close {
+    cursor: pointer;
+  }
+  
+  /* Notification progress bar */
+  
+  .notification-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: var(--content-color);
+    width: 100%;
+    transform: translateX(100%);
+  
+    /* Remove the infinite property for your website */
+  
+    animation: progressBar 5s linear forwards infinite;
+  }
+  
+  .notification-item.slide-out-right {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  /* progressBar Animation */
+  
+  @keyframes progressBar {
+    0% {
+      transform: translateX(0);
+    }
+  
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+@media (max-width: 425px) {
+  .card-result {
+    flex-direction: column;
+    gap: 16px;
+    * {
+      margin: 0;
+    }
+
+    .dados-loja {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
     .top-bar-favicon {
         width: 120px;
@@ -78,8 +443,16 @@ main {
     }
 
     main {
-        padding: 32px;
+        padding: 8px;
+        padding-top: 24px;
         margin-top: 0;
+        margin-bottom: 64px;
+
+    }
+
+    .top-bar {
+      visibility: visible;
+      display: flex;
     }
 }
 
@@ -92,6 +465,10 @@ main {
     }
     .top-bar {
         gap: 24px;
+    }
+
+    main {
+      padding: 24px 80px;
     }
 }
 
