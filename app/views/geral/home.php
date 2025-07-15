@@ -5,6 +5,7 @@
     require_once('./utils/head.php')
 ?>
 </head>
+
 <body>
     <?php
         include './app/components/php/navbar.php';
