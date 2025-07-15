@@ -16,7 +16,10 @@
   ?>
   <main class="f-column" id="main-content">
     <form class="form-suporte">
-      
+      <div class="div-titulo-suporte">
+        <h1 class="titulo-suporte">Suporte</h1>
+        <p class="texto-suporte">Preencha o formulário abaixo para entrar em contato com o suporte.</p>
+      </div>
       <div class="div-input-assunto">
         <input type="text" placeholder="Assunto" class="input-assunto" name="assunto">
       </div>

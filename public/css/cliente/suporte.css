@@ -6,6 +6,24 @@
     align-self: auto;
 }
 
+.div-titulo-suporte{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.titulo-suporte{
+    font-size: 25px;
+    color: var(--LaranjaMaisFeliz);
+    font-weight: 600;
+    margin-top: 20px;   
+    margin-bottom: 10px;
+}
+
+.texto-suporte{
+    font-size: 16px;
+    color: var(--CinzaEscuro);
+}
 
 .div-input-assunto, .div-input-mensagem {
     width: 100%;
@@ -20,7 +38,7 @@
     padding: 8px 12px; 
     font-size: 1em; 
     outline: none;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .input-mensagem{
@@ -50,10 +68,12 @@
     font-weight: 600;
     font-size: 14px;
     letter-spacing: .5px;
+    cursor: pointer;
 }
 
 .icon-mensagem{
-    width: 5%;
+    width: 20px;
+    height: 20px;
     margin-left: 2%;
 }
 
