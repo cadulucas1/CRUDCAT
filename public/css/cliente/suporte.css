@@ -1,0 +1,62 @@
+.form-suporte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: auto;
+}
+
+
+.div-input-assunto, .div-input-mensagem {
+    width: 100%;
+    margin-top: 5%;
+}
+
+
+.input-assunto, .input-mensagem{
+    width: 100%;
+    border: 2px solid #F37F00; 
+    border-radius: 5px; 
+    padding: 8px 12px; 
+    font-size: 1em; 
+    outline: none;
+    margin-top: 50px;
+}
+
+.input-mensagem{
+    height: 200px;
+    margin-top: 10px;
+}
+
+.input-mensagem::placeholder{
+    display: flex;
+    top: 20px;
+}
+
+.btn-enviar-mensagem{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    place-items: center;
+    background-color: var(--LaranjaMaisFeliz);
+    border: none;
+    border-radius: 5px; 
+    padding: 5px 20px;
+    outline: none;
+    color: white;
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .5px;
+}
+
+.icon-mensagem{
+    width: 5%;
+    margin-left: 2%;
+}
+
+.div-btn-enviar-mensagem{
+    margin-top: 10px;
+}
