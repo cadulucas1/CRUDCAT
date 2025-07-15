@@ -54,6 +54,41 @@ main {
     padding-bottom: 112px;
 }
 
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+.input-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.6rem;
+    opacity: 0.7;
+}
+
+.input-group {
+    display: flex;
+    width: 334px;
+    max-width: 100%;
+    align-items: center;
+    background: #f0f0f0;
+    color: #CDCDCD;
+    border-radius: 8px;
+    border: 2px solid var(--LaranjaBase);
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+    font-size: 1rem;
+}
+
 .btn-base {
     width: 100%;
     background-color: var(--LaranjaEscuro);
@@ -65,6 +100,7 @@ main {
     font-size: 16px;
     font-weight: 600;
     transition: all .3s ease;
+
     &:hover {
         cursor: pointer;
         background-color: #F37F00;
@@ -438,6 +474,7 @@ main {
     .top-bar-favicon {
         width: 120px;
     }
+
     .top-bar-brand-name {
         width: calc(120px + 10%);
     }
@@ -460,9 +497,11 @@ main {
     .top-bar-favicon {
         width: 160px;
     }
+
     .top-bar-brand-name {
         width: calc(160px + 10%);
     }
+
     .top-bar {
         gap: 24px;
     }
@@ -476,6 +515,7 @@ main {
     .top-bar-favicon {
         width: 180px;
     }
+
     .top-bar-brand-name {
         width: calc(180px + 10%);
     }
