@@ -5,7 +5,7 @@ $routes = [
     '/search' => 'geral/searchController@search',
     '/navbar' => 'geral/GeralController@navbar',
     '/PerfilLoja' => 'geral/GeralController@perfil_loja',
-    '/suporte' => 'geral/suporteController@suporte'
+    '/suporte' => 'geral/suporteController@suporte',
     '/login' => 'cliente/ClienteController@login',
     '/cadastro' => 'cliente/ClienteController@cadastro',
 ]
