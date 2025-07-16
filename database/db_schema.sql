@@ -67,8 +67,9 @@ CREATE TABLE IF NOT EXISTS lojas_seguidas (
 
 CREATE TABLE suporte (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario BIGINT NOT NULL,
     assunto VARCHAR(255) NOT NULL,
     mensagem TEXT NOT NULL,
-    data_envio DATETIME DEFAULT CURRENT_TIMESTAMP
-    
+    data_envio DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_suporte_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
