@@ -60,6 +60,14 @@ body {
     }
 }
 
+.vermelho{
+    background-color: var(--vermelhoescuro);
+}
+
+.vermelho:hover{
+    background-color: var(--vermelho);
+}
+
 /* Versão desktop grande */
 @media screen and (min-width: 768px) {
     .form-container {
