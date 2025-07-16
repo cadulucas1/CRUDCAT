@@ -13,6 +13,31 @@
     }
 }
 
+.home-container-geral{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: fit-content;
+}
+
+.card-div-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-banner-container{
+    width: 100%;
+}
+
+.home-banner-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
 .scroll-wrapper {
     overflow-x: auto;
     max-width: 100%;
