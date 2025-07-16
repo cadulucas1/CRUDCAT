@@ -14,6 +14,7 @@ class ClienteController extends RenderView
     {
         $this->loadView('cliente/cadastro', []);
     }
+    
 
     public function perfil()
     {
