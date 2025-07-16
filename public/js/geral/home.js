@@ -65,51 +65,115 @@ function renderSession(session) {
   `;
 }
 
-const lojas = [
-  {
-    nome_loja: 'Comper Itanhangá',
-    endereco_loja: 'Rua das das',
-    num_endereco_loja: '112',
-    status: 'Aberto',
-    horario_abertura: '12:00',
-    horario_fechamento: '22:00'
-  },
-  {
-    nome_loja: 'Supermercado Ponto Certo',
-    endereco_loja: 'Av. Afonso Pena',
-    num_endereco_loja: '1500',
-    status: 'Fechado',
-    horario_abertura: '08:00',
-    horario_fechamento: '18:00'
-  },
-  {
-    nome_loja: 'Mercado do Zé',
-    endereco_loja: 'Rua do Comércio',
-    num_endereco_loja: '305',
-    status: 'Aberto',
-    horario_abertura: '07:30',
-    horario_fechamento: '20:00'
-  },
-  {
-    nome_loja: 'Empório Central',
-    endereco_loja: 'Travessa Bonita',
-    num_endereco_loja: '87',
-    status: 'Fechado',
-    horario_abertura: '10:00',
-    horario_fechamento: '22:00'
-  },
-  {
-    nome_loja: 'Feira do Sul',
-    endereco_loja: 'Rua Esperança',
-    num_endereco_loja: '230',
-    status: 'Aberto',
-    horario_abertura: '09:00',
-    horario_fechamento: '21:00'
-  }
-];
+// const lojas = [
+//   {
+//     id_loja: 1,
+//     nome_loja: 'Comper Itanhangá',
+//     endereco_loja: 'Rua das das',
+//     num_endereco_loja: '112',
+//     status: 'Aberto',
+//     horario_abertura: '12:00',
+//     horario_fechamento: '22:00'
+//   },
+//   {
+//     id_loja: 2,
+//     nome_loja: 'Supermercado Ponto Certo',
+//     endereco_loja: 'Av. Afonso Pena',
+//     num_endereco_loja: '1500',
+//     status: 'Fechado',
+//     horario_abertura: '08:00',
+//     horario_fechamento: '18:00'
+//   },
+//   {
+//     id_loja: 3,
+//     nome_loja: 'Mercado do Zé',
+//     endereco_loja: 'Rua do Comércio',
+//     num_endereco_loja: '305',
+//     status: 'Aberto',
+//     horario_abertura: '07:30',
+//     horario_fechamento: '20:00'
+//   },
+//   {
+//     id_loja: 4,
+//     nome_loja: 'Empório Central',
+//     endereco_loja: 'Travessa Bonita',
+//     num_endereco_loja: '87',
+//     status: 'Fechado',
+//     horario_abertura: '10:00',
+//     horario_fechamento: '22:00'
+//   },
+//   {
+//     id_loja: 5,
+//     nome_loja: 'Feira do Sul',
+//     endereco_loja: 'Rua Esperança',
+//     num_endereco_loja: '230',
+//     status: 'Aberto',
+//     horario_abertura: '09:00',
+//     horario_fechamento: '21:00'
+//   }
+// ];
 
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('.store-div');
-  // session.map(renderSession) => Mapeando todo o "json" que receberemos do código php, então acredito que já vai ir funcionando
-  container.innerHTML = lojas.map(renderLojaCard).join('');
+window.retornarIDLoja = function(id) {
+  window.alert(id);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById('main-content');
+  if (!container) return;
+
+  const idUser = 1;
+  let lojas = [];
+
+  try {
+    const response = await fetch(`getLojasSeguidas?id=${idUser}`);
+    if (!response.ok) throw new Error('Erro ao buscar lojas');
+
+    const dados = await response.json();
+
+    if (dados.alerta) {
+      container.innerHTML = `
+        <div class="message-div">
+          <h2>Aparentemente você não segue nenhuma loja.</h2>
+          <p>Que tal seguir novas lojas e receber promoções exclusivas na sua região?</p>
+          <button class="btn-base" onclick="pag('search')">
+            <img src='./public/images/icons/icon_search.svg'>
+            Pesquisar lojas
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    if (dados.erro) {
+      container.innerHTML = `
+        <div class="message-div">
+          <h2>Conecte-se e encontre promoções nas suas lojas mais próximas ;)</h2>
+          <button class="btn-base" onclick="pag('login')">
+            <img src='./public/images/icons/icon_login_porta.svg'>
+            Logar
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+
+    lojas = Array.isArray(dados) ? dados : [];
+
+  } catch (erro) {
+    gerarToast(`Falha ao carregar lojas: ${erro.message}`, 'erro');
+    return;
+  }
+
+  container.innerHTML = `
+    <h2 class="title-store">
+        Lojas seguidas
+    </h2>
+    <ul class="store-div">
+      ${lojas.map(renderLojaCard).join('')}
+    </ul>
+  `;
 });
+
+
+
