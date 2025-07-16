@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('formCadastro');
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
+    // e.preventDefault();
     let valido = true;
 
     const campos = ['nome', 'email', 'telefone', 'senha', 'confirmarSenha'];

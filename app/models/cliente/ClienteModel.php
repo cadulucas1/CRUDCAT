@@ -11,6 +11,21 @@ class ClienteModel
     $this->db->connect();
   }
 
+  // método de cadastro de cliente
+  public function cadastrar($nome, $email, $telefone, $senha)
+  {
+    $sql = "INSERT INTO usuario (nome_usuario, email_usuario, telefone_usuario, senha_usuario)
+            VALUES (:nome, :email, :telefone, :senha)";
+    
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->bindValue(':nome', $nome);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':telefone', $telefone);
+    $stmt->bindValue(':senha', password_hash($senha, PASSWORD_DEFAULT));
+
+    return $stmt->execute();
+  }
+
   public function getLojasById($idUser) {
     $sql = "
         SELECT 

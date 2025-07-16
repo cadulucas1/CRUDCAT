@@ -9,10 +9,42 @@ class ClienteController extends RenderView
     {
         $this->loadView('cliente/login', []);
     }
-
+    // função de cadastrar usuario
     public function cadastro()
-    {
-        $this->loadView('cliente/cadastro', []);
+    {   $erro='';
+        $sucesso='';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $nome = trim($_POST['nome'] ?? '');
+            $email = trim($_POST['email'] ?? '');
+            $telefone = trim($_POST['telefone'] ?? '');
+            $senha = $_POST['senha'] ?? '';
+            $confirmar = $_POST['confirmarSenha'] ?? '';
+
+            if (empty($nome) || empty($email) || empty($telefone) || empty($senha) || empty($confirmar)) {
+                $erro = "Preencha todos os campos.";
+            } elseif ($senha !== $confirmar) {
+                $erro = "As senhas não coincidem.";
+            } else {
+                $model = new ClienteModel();
+                $ok = $model->cadastrar($nome, $email, $telefone, $senha);
+
+                if ($ok) {
+                    $sucesso = "Cadastro realizado com sucesso!";
+                    // redirecionar para login
+                    header('Location: /CRUDCAT/login');
+                    exit;
+                } else {
+                    $erro = "Erro ao salvar no banco de dados.";
+                }
+            }
+        }
+
+        $this->loadView('cliente/cadastro', [
+            'erro' => $erro,
+            'sucesso' => $sucesso
+        ]);
+
     }
 
     public function perfil()
