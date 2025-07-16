@@ -9,6 +9,7 @@ $routes = [
     '/suporteAdm' => 'geral/suporteAdmController@suporteAdm',
     '/login' => 'cliente/ClienteController@login',
     '/cadastro' => 'cliente/ClienteController@cadastro',
+    '/getLojasSeguidas' => 'cliente/ClienteController@getLojasSeguidas',
 ]
 
 ?>
