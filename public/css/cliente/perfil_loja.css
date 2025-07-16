@@ -1,5 +1,6 @@
 main {
   padding: 0 !important;
+  height: fit-content;
 }
 
 .perfil_loja_banner {
@@ -18,7 +19,7 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 0 64px;
-  bottom: -32%;
+  bottom: -24%;
 }
 
 .perfil_loja_banner_container {
@@ -183,7 +184,7 @@ main {
 }
 
 .perfil_loja_grid_anuncios {
-  height: 100%;
+  height: fit-content;
   display: flex;
   padding: 24px 64px 32px 64px;
   flex-direction: column;
@@ -197,9 +198,20 @@ main {
   background-color: var(--CinzaClaro);
 }
 
+@media (max-width: 1440px){
+  .perfil_loja_content_pfp{
+    bottom: -34%;
+  }
+}
+
 @media (max-width: 1024px) {
+
+  .perfil_loja_content_pfp{
+    bottom: -38%;
+  }
+
   .perfil_loja_grid_dados_loja {
-    margin-top: 100px;
+    margin-top: 116px;
   }
 
   .perfil_loja_pfp_pic {
