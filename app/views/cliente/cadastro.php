@@ -10,9 +10,9 @@ require_once('./utils/head.php')
     <?php
         include './app/components/php/navbar.php';
         include './app/components/php/topbar.php'; 
-    ?>
+    ?>  
     <div class="cadastro-card">
-        <form id="formCadastro" novalidate> 
+        <form id="formCadastro" novalidate method="POST" action=""> 
             <h2 class="cadastro-title">Cadastre-se</h2>
 
             <div class="input-group">
