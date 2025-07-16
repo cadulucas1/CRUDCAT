@@ -12,6 +12,7 @@ $routes = [
     '/getLojasSeguidas' => 'cliente/ClienteController@getLojasSeguidas',
     '/enviarSuporte' => 'geral/SuporteController@enviarSuporte',
     '/perfil' => 'cliente/ClienteController@perfil',
+    '/toggleSeguirLoja' => 'cliente/ClienteController@toggleSeguirLoja',
 ]
 
 ?>

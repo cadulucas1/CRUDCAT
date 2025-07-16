@@ -193,9 +193,13 @@ main {
 
 .perfil_loja_imagens_anuncios {
   border-radius: 8px;
-  height: 120px;
+  height: fit-content;
+  justify-content: space-between;
+  padding: 8px;
   width: 100%;
-  background-color: var(--CinzaClaro);
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
 }
 
 @media (max-width: 1440px){
