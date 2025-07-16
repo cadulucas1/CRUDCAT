@@ -1,0 +1,101 @@
+main{
+    width: 100%;
+    height: 100%;
+}
+
+.error_main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 87vh;
+    row-gap: 32px;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+    max-width: 100vw;
+    align-content: center;
+}
+
+.error_container_body {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & img{
+        width: 700px;
+        height: 100%;
+    }
+}
+
+.error_btn {
+    width: 700px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    place-items: center;
+    background-color: var(--LaranjaMaisFeliz);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .5px;
+    cursor: pointer;
+    gap:8px;
+}
+
+.error_text{
+    display: flex;
+    row-gap: 16px;
+    flex-direction: column;
+}
+.error_text h1 {
+    font-size: 48px;
+    color: var(--LaranjaMaisFeliz);
+    text-align: center;
+    font-weight: 600;
+    line-height: 90%;
+  }
+
+.error_text h2 {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 90%;
+}
+
+@media (max-width: 1024px) {
+    .error_container_body img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .error_main{
+        padding: 48px !important;
+    }
+
+    .error_btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px){
+    .error_text h1 {
+        font-size: 32px;
+    }
+
+    .error_text h2 {
+        font-size: 16px;
+    }
+
+    .error_main{
+        justify-content: flex-start;
+        height: fit-content;
+    }
+}

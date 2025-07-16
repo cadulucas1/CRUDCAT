@@ -63,3 +63,12 @@ CREATE TABLE IF NOT EXISTS lojas_seguidas (
   CONSTRAINT fk_ls_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   CONSTRAINT fk_ls_loja FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
+
+
+CREATE TABLE suporte (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    assunto VARCHAR(255) NOT NULL,
+    mensagem TEXT NOT NULL,
+    data_envio DATETIME DEFAULT CURRENT_TIMESTAMP
+    
+);

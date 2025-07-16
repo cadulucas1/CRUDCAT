@@ -15,7 +15,7 @@
       include './app/components/php/topbar.php'; 
   ?>
   <div class="page-container">
-    <form class="form-suporte">
+    <form class="form-suporte" method="post" action="">
       <div class="div-titulo-suporte">
         <h1 class="titulo-suporte">Suporte</h1>
         <p class="texto-suporte">Preencha o formulário abaixo para entrar em contato com o suporte.</p>
@@ -25,7 +25,7 @@
       </div>
 
       <div class="div-input-mensagem">
-        <textarea placeholder="Mensagem..." class="input-mensagem" name="assunto"></textarea>
+        <textarea placeholder="Mensagem..." class="input-mensagem" name="mensagem"></textarea>
       </div>
 
       <button type="submit"class="btn-enviar-mensagem" name="enviar">
@@ -36,4 +36,5 @@
     </form>
   </div>
 </body>
+<script type="module" src="./public/js/cliente/suporte.js"></script>
 </html>
