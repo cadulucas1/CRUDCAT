@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <?php
-$css = ['/css/cliente/editarPerfil.css', '/css/geral/navbar.css'];
+$css = ['/css/cliente/perfil.css', '/css/geral/navbar.css'];
 require_once('./utils/head.php');
 ?>
 
@@ -13,7 +13,7 @@ require_once('./utils/head.php');
     ?>
 
     <main>
-        <form class="form-container" method="POST" action="/editarPerfil/salvar" enctype="multipart/form-data">
+        <form class="form-container" method="POST" action="/perfil/salvar" enctype="multipart/form-data">
             <div class="avatar">
                 <img src="./public/images/fotos/foto_default.svg" alt="Foto de perfil" />
             </div>
@@ -42,7 +42,7 @@ require_once('./utils/head.php');
     </main>
 
     <script src="./components/js/toast.js"></script>
-    <script src="./public/js/cliente/editarPerfil.js"></script>
+    <script src="./public/js/cliente/perfil.js"></script>
 
 </body>
 

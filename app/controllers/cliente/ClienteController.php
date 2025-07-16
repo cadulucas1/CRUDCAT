@@ -15,9 +15,9 @@ class ClienteController extends RenderView
         $this->loadView('cliente/cadastro', []);
     }
 
-    public function editarPerfil()
+    public function perfil()
     {
-        $this->loadView('cliente/editarPerfil', []);
+        $this->loadView('cliente/perfil', []);
     }
 
     public function getLojasSeguidas()
