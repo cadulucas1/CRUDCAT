@@ -54,7 +54,6 @@ class ClienteController extends RenderView
         echo json_encode($resposta);
     }
 
-<<<<<<< HEAD
     public function salvarPerfil()
     {
         // session_start();
@@ -112,7 +111,6 @@ class ClienteController extends RenderView
         header('Location: /CRUDCAT/perfil');
         exit;
     }
-=======
     public function toggleSeguirLoja() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             http_response_code(405);
@@ -156,5 +154,4 @@ class ClienteController extends RenderView
         }
     }
     
->>>>>>> 2145986e15976884e899625f17f0de21575b3280
 }

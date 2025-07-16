@@ -11,27 +11,6 @@ class ClienteModel
         $this->db->connect();
     }
 
-<<<<<<< HEAD
-    public function getLojasById($idUser)
-    {
-        $sql = "
-            SELECT 
-              ls.id_usuario,
-              ls.id_loja,
-              ls.status_seguida,
-              l.id_loja AS loja_id,
-              l.nome_loja,
-              l.num_endereco_loja,
-              l.endereco_loja,
-              l.horario_abertura,
-              l.horario_fechamento
-            FROM 
-              lojas_seguidas AS ls
-              INNER JOIN loja AS l ON ls.id_loja = l.id_loja
-            WHERE 
-              ls.id_usuario = :idUser
-        ";
-=======
   public function getLojasById($idUser) {
     $sql = "
         SELECT 
@@ -53,7 +32,6 @@ class ClienteModel
         AND 
           ls.status_seguida = TRUE
     ";
->>>>>>> 2145986e15976884e899625f17f0de21575b3280
 
         $stmt = $this->db->getConnection()->prepare($sql);
         $stmt->bindValue(':idUser', $idUser, PDO::PARAM_INT);
@@ -61,12 +39,7 @@ class ClienteModel
 
         $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-<<<<<<< HEAD
         return empty($dados) ? null : $dados;
-    }
-}
-=======
-    return empty($dados) ? null : $dados;
   }
 
   public function toggleSeguirLoja(int $idUser, int $idLoja, bool $seguir): bool {
@@ -85,4 +58,3 @@ class ClienteModel
   }
 
 }  
->>>>>>> 2145986e15976884e899625f17f0de21575b3280

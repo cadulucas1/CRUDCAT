@@ -2,7 +2,6 @@
 <html lang="pt-br">
 
 <?php
-session_start();
 $css = ['/css/cliente/perfil.css', '/css/geral/navbar.css'];
 require_once('./utils/head.php');
 ?>
