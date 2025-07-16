@@ -16,7 +16,7 @@ require_once('./utils/head.php')
             <h2 class="cadastro-title">Cadastre-se</h2>
 
             <div class="input-group">
-                <img src="./public/images/icons/icon_user.svg" alt="Ícone de nome" class="input-icon">
+                <img src="./public/images/icons/icon_user2.svg" alt="Ícone de nome" class="input-icon">
                 <input type="text" id="nome" name="nome" placeholder="Nome Completo" required />
                 <span class="error-message" id="erro-nome"></span>
             </div>
@@ -58,7 +58,7 @@ require_once('./utils/head.php')
             </div>
         </form>
     </div>
-
+    <script src = "./components/js/toast.js"></script>
     <script src="./public/js/cliente/cadastro.js"></script>
 </body>
 

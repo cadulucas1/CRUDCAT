@@ -6,27 +6,35 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       let valido = true;
 
-      // Limpa mensagens anteriores
-      document.getElementById('erro-loginEmail').textContent = '';
-      document.getElementById('erro-loginSenha').textContent = '';
+      const emailInput = document.getElementById('loginEmail');
+      const senhaInput = document.getElementById('loginSenha');
+      emailInput.classList.remove('input-erro');
+      senhaInput.classList.remove('input-erro');
 
-      const email = document.getElementById('loginEmail').value.trim();
-      const senha = document.getElementById('loginSenha').value;
+      const email = emailInput.value.trim();
+      const senha = senhaInput.value;
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!emailRegex.test(email)) {
-        document.getElementById('erro-loginEmail').textContent = 'E-mail inválido.';
+        gerarToast('Email inválido', 'erro');
+        emailInput.classList.add('input-erro');
         valido = false;
       }
 
       if (senha === '') {
-        document.getElementById('erro-loginSenha').textContent = 'Digite sua senha.';
+        gerarToast('Digite sua senha', 'erro');
+        senhaInput.classList.add('input-erro');
         valido = false;
       }
 
       if (valido) {
-        formLogin.submit(); // ou AJAX login
+        gerarToast('Login realizado com sucesso!', 'sucesso');
+
+        
+        setTimeout(() => {
+          window.location.href = 'Loja'; 
+        }, 3000);
       }
     });
   }
