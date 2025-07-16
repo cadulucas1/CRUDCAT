@@ -9,12 +9,104 @@ class ClienteController extends RenderView
     {
         $this->loadView('cliente/login', []);
     }
-
+    // função de cadastrar usuario
     public function cadastro()
     {
-        $this->loadView('cliente/cadastro', []);
+        $isAjax = (
+            !empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'
+        );
+
+        $erro    = '';
+        $sucesso = '';
+        $field   = null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nome       = trim($_POST['nome']           ?? '');
+            $email      = trim($_POST['email']          ?? '');
+            $telefone   = trim($_POST['telefone']       ?? '');
+            $senha      =               $_POST['senha']  ?? '';
+            $confirmar  =               $_POST['confirmarSenha'] ?? '';
+
+            $model = new ClienteModel();
+
+            if (empty($nome) || empty($email) || empty($telefone) || empty($senha) || empty($confirmar)) {
+                $erro = "Preencha todos os campos.";
+                if (empty($nome)) {
+                    $field = 'nome';
+                } elseif (empty($email)) {
+                    $field = 'email';
+                } elseif (empty($telefone)) {
+                    $field = 'telefone';
+                } elseif (empty($senha)) {
+                    $field = 'senha';
+                } else {
+                    $field = 'confirmarSenha';
+                }
+            }
+            elseif (strpos($nome, ' ') === false) {
+                $erro  = "Digite seu nome completo.";
+                $field = 'nome';
+            }
+            elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $erro  = "E-mail inválido.";
+                $field = 'email';
+            }
+            elseif (!preg_match('/^\d{10,}$/', preg_replace('/\D/', '', $telefone))) {
+                $erro  = "Telefone inválido.";
+                $field = 'telefone';
+            }
+            elseif (strlen($senha) < 6) {
+                $erro  = "A senha deve ter ao menos 6 caracteres.";
+                $field = 'senha';
+            }
+            elseif ($senha !== $confirmar) {
+                $erro  = "As senhas não coincidem.";
+                $field = 'confirmarSenha';
+            }
+            elseif ($model->existeEmail($email)) {
+                $erro  = "E-mail já cadastrado.";
+                $field = 'email';
+            }
+            elseif ($model->existeTelefone($telefone)) {
+                $erro  = "Telefone já cadastrado.";
+                $field = 'telefone';
+            }
+            else {
+                $ok = $model->cadastrar($nome, $email, $telefone, $senha);
+                if ($ok) {
+                    if ($isAjax) {
+                        header('Content-Type: application/json');
+                        echo json_encode([
+                            'success'  => true,
+                            'message'  => 'Cadastro realizado com sucesso!',
+                            'redirect' => '/CRUDCAT/login'
+                        ]);
+                        exit;
+                    }
+                    header('Location: /CRUDCAT/login');
+                    exit;
+                } else {
+                    $erro = "Erro ao salvar no banco de dados.";
+                }
+            }
+        }
+
+        if ($isAjax) {
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => false,
+                'message' => $erro,
+                'field'   => $field
+            ]);
+            exit;
+        }
+        $this->loadView('cliente/cadastro', [
+            'erro'    => $erro,
+            'sucesso' => $sucesso
+        ]);
     }
-    
+
 
     public function perfil()
     {
