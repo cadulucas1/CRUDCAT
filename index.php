@@ -2,7 +2,7 @@
     require_once __DIR__ . '/core/Core.php';
     require_once __DIR__ . '/config/routes.php';
 
-    if (! isset($_SESSION)) {
+    if (!isset($_SESSION)) {
         session_start();
     };
 
