@@ -26,11 +26,16 @@ require_once('./utils/head.php')
                 <input type="password" id="loginSenha" placeholder="Senha" required />
                 <span class="error-message" id="erro-loginSenha"></span>
             </div>
-
             <button type="submit" class="btn-base login-btn">
                 <img src="./public/images/icons/icon_login.svg" alt="Ícone login" class="btn-icon">
                 Logar
             </button>
+            <div class="login-message">
+                <p onclick="pag('cadastro')">
+                    Não tem uma conta?
+                    <a>Cadastre-se</a>
+                </p>
+            </div>
         </form>
     </div>
     <script src="./public/js/cliente/login.js"></script>

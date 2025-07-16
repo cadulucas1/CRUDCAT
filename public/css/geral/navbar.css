@@ -1,7 +1,7 @@
 
 .navbar_button_container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: #F6640C;
     width: 100%;
@@ -27,12 +27,31 @@
 .navbar_right {
     display: flex;
     gap: 12px;
+    height: 100%;
+    align-items: center;
+}
+
+.navbar_button.active {
+    background-color: var(--LaranjaBase);
+    border-radius: 0;
+    aspect-ratio: 9 / 16;
+    width: auto;
+    height: calc(32px + 64px) !important;
+    border-radius: 0 0 20px 20px;
+}
+
+.active {
+    img {
+        height: 32px !important;
+        width: 32px !important;
+    }
 }
 
 .navbar_button {
     outline: 0 !important;
     border: 0 !important;
-    width: 40px;
+    width: auto;
+    aspect-ratio: 1 / 1;
     height: 40px;
     border-radius: 50%;
     background-color: transparent;
@@ -40,18 +59,22 @@
     align-items: center;
     justify-content: center;
     color: #fff;
-    transition: all ease-in-out 0.1s;
+    transition: all ease-in-out 0.2s;
     cursor: pointer;
 }
 
 .navbar_button img {
-    height: 32px;
-    width: 32px;
+    height: 24px;
+    width: 24px;
+}
+
+.navbar_button.active:hover {
+    transform: none;
+    background-color: var(--LaranjaEscuro);
 }
 
 .navbar_button:hover {
     transform: scale(1.1);
-    transition: transform 0.2s ease-in-out;
 }
 
 .icon {
@@ -71,5 +94,9 @@
 
     .navbar_right {
         gap: 24px;
+    }
+
+    .navbar_button.active {
+        border-radius: 20px 20px 0 0;
     }
 }

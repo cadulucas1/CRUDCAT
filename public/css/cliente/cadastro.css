@@ -29,6 +29,7 @@
      ;
  }
 
+<<<<<<< HEAD
  .error-message {
      color: red;
      font-size: 12px;
@@ -37,6 +38,21 @@
  }
 
  .cadastro-title {
+=======
+  .cadastro-message {
+    margin-top: 16px;
+    :hover{
+        cursor: pointer;
+    }
+    a {
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--LaranjaMaisFeliz);
+    }
+ }
+
+ .login-title {
+>>>>>>> 7217ffd52985560e9460d371705b426506c322af
      display: flex;
      justify-content: center;
  }
