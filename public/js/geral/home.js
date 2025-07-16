@@ -113,8 +113,8 @@ function renderSession(session) {
 //   }
 // ];
 
-window.retornarIDLoja = function(id) {
-  window.alert(id);
+window.renderLoja = function(idUser, idLoja) {
+  window.location.href = `Loja?id_user=${idUser}&id_loja=${idLoja}`;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -173,6 +173,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       ${lojas.map(renderLojaCard).join('')}
     </ul>
   `;
+
+  container.addEventListener('click', (e) => {
+    const card = e.target.closest('.card-result');
+  
+    if (!card) return;
+  
+    const idLoja = card.dataset.idLoja;
+    
+    window.renderLoja(idUser, idLoja);
+  });
 });
 
 

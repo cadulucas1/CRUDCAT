@@ -41,4 +41,48 @@ class ClienteController extends RenderView
 
         echo json_encode($resposta);
     }
+
+    public function toggleSeguirLoja() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Método não permitido']);
+            exit;
+        }
+    
+        header('Content-Type: application/json; charset=utf-8');
+    
+        $payload = json_decode(file_get_contents('php://input'), true);
+    
+        $idUser = isset($payload['id_user']) ? intval($payload['id_user']) : 0;
+        $idLoja = isset($payload['id_loja']) ? intval($payload['id_loja']) : 0;
+        $seguir  = isset($payload['seguir']) ? (bool)$payload['seguir'] : null;
+    
+        if ($idUser <= 0 || $idLoja <= 0 || !is_bool($seguir)) {
+            http_response_code(400);
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => 'Parâmetros inválidos'
+            ]);
+            exit;
+        }
+    
+        $model = new ClienteModel();
+    
+        $ok = $model->toggleSeguirLoja($idUser, $idLoja, $seguir);
+    
+        if ($ok) {
+            http_response_code(200);
+            echo json_encode([
+                'sucesso' => true,
+                'mensagem' => $seguir ? 'Agora você segue esta loja' : 'Você parou de seguir esta loja'
+            ]);
+        } else {
+            http_response_code(500);
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => 'Erro ao atualizar status de seguimento'
+            ]);
+        }
+    }
+    
 }

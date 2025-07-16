@@ -1,6 +1,6 @@
 function renderLojaCard(l) {
     return `
-    <li class="card-result" onclick="retornarIDLoja(${l.id_loja})">
+    <li class="card-result" data-id-loja="${l.id_loja}">
         <div class="image-loja">
             <img src="https://placehold.co/400">
         </div>
