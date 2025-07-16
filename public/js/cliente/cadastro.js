@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const campos = ['nome', 'email', 'telefone', 'senha', 'confirmarSenha'];
 
-    // Limpa estados anteriores
     campos.forEach(id => {
       const input = document.getElementById(id);
       input.classList.remove('input-erro');
@@ -19,14 +18,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const senha = document.getElementById('senha');
     const confirmarSenha = document.getElementById('confirmarSenha');
 
-    // Valida nome (mínimo 2 palavras)
     if (nome.value.trim() === '' || nome.value.trim().split(' ').length < 2) {
       gerarToast('Digite seu nome completo.', 'erro');
       nome.classList.add('input-erro');
       valido = false;
     }
 
-    // Valida email (regex simples)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.value.trim())) {
       gerarToast('E-mail inválido.', 'erro');
@@ -34,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
       valido = false;
     }
 
-    // Valida telefone (mínimo 10 dígitos numéricos)
     const telefoneLimpo = telefone.value.replace(/\D/g, '');
     if (telefoneLimpo.length < 10) {
       gerarToast('Telefone inválido.', 'erro');
@@ -42,27 +38,25 @@ document.addEventListener('DOMContentLoaded', function () {
       valido = false;
     }
 
-    // Valida senha
     if (senha.value.length < 6) {
       gerarToast('A senha deve ter ao menos 6 caracteres.', 'erro');
       senha.classList.add('input-erro');
       valido = false;
     }
 
-    // Valida confirmação de senha
     if (senha.value !== confirmarSenha.value) {
       gerarToast('As senhas não coincidem.', 'erro');
       confirmarSenha.classList.add('input-erro');
       valido = false;
     }
 
-    // Se tudo estiver ok
+   
     if (valido) {
       gerarToast('Cadastro enviado com sucesso!', 'sucesso');
 
-      // Espera 3 segundos e redireciona para a tela de login
+
       setTimeout(() => {
-        window.location.href = 'login'; // Altere para a URL correta da sua página de login
+        window.location.href = 'login'; 
       }, 3000);
     }
   });
