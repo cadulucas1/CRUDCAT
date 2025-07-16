@@ -42,6 +42,12 @@ require_once('./utils/head.php')
                 <img src="./public/images/icons/icon_login.svg" alt="Ícone login" class="btn-icon">
                 Cadastrar
             </button>
+            <div class="cadastro-message">
+                <p onclick="pag('login')">
+                    Já tem uma conta?
+                    <a>Logar</a>
+                </p>
+            </div>
         </form>
     </div>
 </body>

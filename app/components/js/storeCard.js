@@ -1,6 +1,6 @@
 function renderLojaCard(l) {
     return `
-    <li class="card-result">
+    <li class="card-result" onclick="retornarIDLoja(${l.id_loja})">
         <div class="image-loja">
             <img src="https://placehold.co/400">
         </div>
@@ -12,7 +12,7 @@ function renderLojaCard(l) {
             <img src="./public/images/icons/icon_localizacao.svg" alt="ícone localização" class="dados-icone" id="icon-localizacao">
             ${l.endereco_loja}, ${l.num_endereco_loja}
         </p>
-        <p class="loja-status">
+        <!-- <p class="loja-status">
             <img src="./public/images/icons/icon_status.svg" alt="ícone status" class="dados-icone" id="icon-status">
             Status: <span class="status-${l.status}">${l.status}</span>
         </p>
@@ -20,7 +20,7 @@ function renderLojaCard(l) {
             <img src="./public/images/icons/icon_relogio.svg" alt="ícone horário" class="dados-icone" id="icon-horario">
             Fechado das ${l.horario_abertura}h às ${l.horario_fechamento}h
         </p>
-        </div>
+        </div> COMENTADO POR ENQUANTO -->
     </li>
     `
 }

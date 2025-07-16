@@ -38,6 +38,8 @@
     <link rel='icon' type='image/x-icon' href='$PATH_PUBLIC/images/favicon.svg'>
     <title>$titulo</title>
     <link rel='stylesheet' href='$PATH_PUBLIC/css/style.css'>
+    <script src='$PATH_PUBLIC/js/geral/base.js'></script>
+    <script type='module' src='$PATH_COMPONENTS/js/toast.js'></script>
 ";
 
 //concatena os CSSs e Scripts
