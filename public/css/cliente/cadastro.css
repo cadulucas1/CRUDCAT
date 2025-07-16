@@ -27,7 +27,14 @@
      ;
  }
 
- .login-title {
+ .error-message {
+     color: red;
+     font-size: 12px;
+     margin-top: 4px;
+     display: block;
+ }
+
+ .cadastro-title {
      display: flex;
      justify-content: center;
  }
