@@ -3,7 +3,9 @@
 
 <?php
 $css = ['/css/cliente/login.css', '/css/geral/navbar.css'];
-require_once('./utils/head.php')
+require_once('./utils/head.php');
+
+
 ?>
 
 <body>
