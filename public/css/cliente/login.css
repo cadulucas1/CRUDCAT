@@ -82,6 +82,13 @@
      margin-right: 8px;
  }
 
+  .error-message {
+     color: red;
+     font-size: 12px;
+     margin-top: 4px;
+     display: block;
+ }
+
  .input-icon {
      width: 20px;
      height: 20px;
