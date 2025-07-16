@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS lojas_seguidas (
   CONSTRAINT fk_ls_loja FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
 
-
+-- Suporte ao usuário
 CREATE TABLE suporte (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario BIGINT NOT NULL,
