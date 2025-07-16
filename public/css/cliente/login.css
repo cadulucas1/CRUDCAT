@@ -31,7 +31,18 @@
      height: 380px;
      width: 100%;
      max-width: 370px;
-     ;
+ }
+
+ .login-message {
+    margin-top: 16px;
+    :hover{
+        cursor: pointer;
+    }
+    a {
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--LaranjaMaisFeliz);
+    }
  }
 
  .login-card h2 {
@@ -69,6 +80,13 @@
      width: 18px;
      height: 18px;
      margin-right: 8px;
+ }
+
+  .error-message {
+     color: red;
+     font-size: 12px;
+     margin-top: 4px;
+     display: block;
  }
 
  .input-icon {

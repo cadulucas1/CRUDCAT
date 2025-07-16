@@ -1,14 +1,25 @@
 <?php
 
 $routes = [
+
+    // Rotas Gerais
     '/' => 'geral/GeralController@index',
-    '/search' => 'geral/searchController@search',
-    '/navbar' => 'geral/GeralController@navbar',
-    '/PerfilLoja' => 'geral/GeralController@perfil_loja',
-    '/suporte' => 'geral/suporteController@suporte',
-    '/suporteAdm' => 'geral/suporteAdmController@suporteAdm',
+    // '/navbar' => 'geral/GeralController@navbar',
+    '/Loja' => 'geral/GeralController@perfil_loja',
+    '/suporteAdm' => 'geral/SuporteAdmController@suporteAdm',
+    '/enviarSuporte' => 'cliente/SuporteController@enviarSuporte',
+
+
+    // Rotas Cliente
+    '/search' => 'cliente/SearchController@search',
+    '/suporte' => 'cliente/SuporteController@suporte',
     '/login' => 'cliente/ClienteController@login',
     '/cadastro' => 'cliente/ClienteController@cadastro',
+    '/getLojasSeguidas' => 'cliente/ClienteController@getLojasSeguidas',
+    '/perfil' => 'cliente/ClienteController@perfil',
+    '/perfil-salvar' => 'cliente/ClienteController@salvarPerfil',
+    '/toggleSeguirLoja' => 'cliente/ClienteController@toggleSeguirLoja',
+
 ]
 
 ?>

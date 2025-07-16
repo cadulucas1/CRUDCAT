@@ -23,13 +23,27 @@
      border-radius: 10px;
      padding: 1.5rem;
      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-     height: 480px;
+     height: 550px;
      width: 100%;
      max-width: 370px;
      ;
  }
 
- .login-title {
+ .cadastro-message {
+     margin-top: 16px;
+
+     :hover {
+         cursor: pointer;
+     }
+
+     a {
+         text-decoration: none;
+         font-weight: 600;
+         color: var(--LaranjaMaisFeliz);
+     }
+ }
+
+ .cadastro-title {
      display: flex;
      justify-content: center;
  }
@@ -39,6 +53,13 @@
      margin-bottom: 1.2rem;
      font-size: 1.5rem;
      color: #333;
+ }
+
+ .error-message {
+     color: red;
+     font-size: 12px;
+     margin-top: 4px;
+     display: block;
  }
 
 
@@ -79,9 +100,9 @@
  }
 
  @media (min-width: 768px) {
-    body {
-        justify-content: center;
-    }
+     body {
+         justify-content: center;
+     }
  }
 
  @media (min-width: 600px) {
