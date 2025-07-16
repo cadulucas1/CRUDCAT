@@ -3,7 +3,7 @@
 class searchController extends RenderView {
 
     public function search() {
-        $this->loadView('cliente/search' ,[]);
+        $this->loadView('geral/search' ,[]);
     }
 
 }
