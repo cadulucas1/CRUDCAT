@@ -1,36 +1,89 @@
 <?php
 
 require_once __DIR__ . '/../../models/cliente/ClienteModel.php';
+require_once __DIR__ . '/../../models/cliente/UsuarioModel.php';
 
 class ClienteController extends RenderView
 {
-
     public function login()
     {
         $this->loadView('cliente/login', []);
     }
     // função de cadastrar usuario
     public function cadastro()
-    {   $erro='';
-        $sucesso='';
+    {
+        $isAjax = (
+            !empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'
+        );
+
+        $erro    = '';
+        $sucesso = '';
+        $field   = null;
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nome = trim($_POST['nome'] ?? '');
-            $email = trim($_POST['email'] ?? '');
-            $telefone = trim($_POST['telefone'] ?? '');
-            $senha = $_POST['senha'] ?? '';
-            $confirmar = $_POST['confirmarSenha'] ?? '';
+            $nome       = trim($_POST['nome']           ?? '');
+            $email      = trim($_POST['email']          ?? '');
+            $telefone   = trim($_POST['telefone']       ?? '');
+            $senha      =               $_POST['senha']  ?? '';
+            $confirmar  =               $_POST['confirmarSenha'] ?? '';
+
+            $model = new ClienteModel();
 
             if (empty($nome) || empty($email) || empty($telefone) || empty($senha) || empty($confirmar)) {
                 $erro = "Preencha todos os campos.";
-            } elseif ($senha !== $confirmar) {
-                $erro = "As senhas não coincidem.";
-            } else {
-                $model = new ClienteModel();
+                if (empty($nome)) {
+                    $field = 'nome';
+                } elseif (empty($email)) {
+                    $field = 'email';
+                } elseif (empty($telefone)) {
+                    $field = 'telefone';
+                } elseif (empty($senha)) {
+                    $field = 'senha';
+                } else {
+                    $field = 'confirmarSenha';
+                }
+            }
+            elseif (strpos($nome, ' ') === false) {
+                $erro  = "Digite seu nome completo.";
+                $field = 'nome';
+            }
+            elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $erro  = "E-mail inválido.";
+                $field = 'email';
+            }
+            elseif (!preg_match('/^\d{10,}$/', preg_replace('/\D/', '', $telefone))) {
+                $erro  = "Telefone inválido.";
+                $field = 'telefone';
+            }
+            elseif (strlen($senha) < 6) {
+                $erro  = "A senha deve ter ao menos 6 caracteres.";
+                $field = 'senha';
+            }
+            elseif ($senha !== $confirmar) {
+                $erro  = "As senhas não coincidem.";
+                $field = 'confirmarSenha';
+            }
+            elseif ($model->existeEmail($email)) {
+                $erro  = "E-mail já cadastrado.";
+                $field = 'email';
+            }
+            elseif ($model->existeTelefone($telefone)) {
+                $erro  = "Telefone já cadastrado.";
+                $field = 'telefone';
+            }
+            else {
                 $ok = $model->cadastrar($nome, $email, $telefone, $senha);
-
                 if ($ok) {
-                    $sucesso = "Cadastro realizado com sucesso!";
-                    // redirecionar para login
+                    if ($isAjax) {
+                        header('Content-Type: application/json');
+                        echo json_encode([
+                            'success'  => true,
+                            'message'  => 'Cadastro realizado com sucesso!',
+                            'redirect' => '/CRUDCAT/login'
+                        ]);
+                        exit;
+                    }
                     header('Location: /CRUDCAT/login');
                     exit;
                 } else {
@@ -39,16 +92,31 @@ class ClienteController extends RenderView
             }
         }
 
+        if ($isAjax) {
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => false,
+                'message' => $erro,
+                'field'   => $field
+            ]);
+            exit;
+        }
         $this->loadView('cliente/cadastro', [
-            'erro' => $erro,
+            'erro'    => $erro,
             'sucesso' => $sucesso
         ]);
-
     }
+
 
     public function perfil()
     {
-        $this->loadView('cliente/perfil', []);
+        // ⛔️ Ainda não temos login implementado, então para teste usa id fixo
+        $id_usuario = 1; // Depois use $_SESSION['usuario_id']
+
+        $usuarioModel = new UsuarioModel();
+        $usuario = $usuarioModel->getUsuarioById($id_usuario);
+
+        $this->loadView('cliente/perfil', ['usuario' => $usuario]);
     }
 
     public function getLojasSeguidas()
@@ -62,14 +130,13 @@ class ClienteController extends RenderView
 
         $idUsuario = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-        $model = new ClienteModel;
-
-        $resposta = $model->getLojasById($idUsuario);
-
         if ($idUsuario <= 0) {
             echo json_encode(['erro' => 'Usuário não logado']);
             exit;
         }
+
+        $model = new ClienteModel();
+        $resposta = $model->getLojasById($idUsuario);
 
         if (empty($resposta)) {
             echo json_encode(['alerta' => 'Você não segue nenhuma loja']);
@@ -79,6 +146,63 @@ class ClienteController extends RenderView
         echo json_encode($resposta);
     }
 
+    public function salvarPerfil()
+    {
+        // session_start();
+
+        // if (!isset($_SESSION['usuario_id'])) {
+        //     header('Location: /login');
+        //     exit;
+        // }
+
+        $id_usuario = $_SESSION['usuario_id'] ?? 1;
+
+        $nome     = trim($_POST['nome'] ?? '');
+        $email    = trim($_POST['email'] ?? '');
+        $telefone = trim($_POST['telefone'] ?? '');
+        $senha    = $_POST['senha'] ?? '';
+        $confirmarSenha = $_POST['confirmar_senha'] ?? '';
+
+        if (empty($nome) || empty($email) || empty($telefone)) {
+            $_SESSION['mensagem_erro'] = 'Nome, e-mail e telefone são obrigatórios.';
+            header('Location: /CRUDCAT/perfil');
+            exit;
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['mensagem_erro'] = 'E-mail inválido.';
+            header('Location: /CRUDCAT/perfil');
+            exit;
+        }
+
+        if (!empty($senha) || !empty($confirmarSenha)) {
+            if ($senha !== $confirmarSenha) {
+                $_SESSION['mensagem_erro'] = 'As senhas não coincidem.';
+                header('Location: /CRUDCAT/perfil');
+                exit;
+            }
+            if (strlen($senha) < 6) {
+                $_SESSION['mensagem_erro'] = 'A senha deve ter pelo menos 6 caracteres.';
+                header('Location: /CRUDCAT/perfil');
+                exit;
+            }
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+        } else {
+            $senhaHash = null;
+        }
+
+        $usuarioModel = new UsuarioModel();
+
+        if ($senhaHash) {
+            $usuarioModel->atualizarPerfilComSenha($id_usuario, $nome, $email, $telefone, $senhaHash);
+        } else {
+            $usuarioModel->atualizarPerfilSemSenha($id_usuario, $nome, $email, $telefone);
+        }
+
+        $_SESSION['mensagem_sucesso'] = 'Perfil atualizado com sucesso!';
+        header('Location: /CRUDCAT/perfil');
+        exit;
+    }
     public function toggleSeguirLoja() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             http_response_code(405);

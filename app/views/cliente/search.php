@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <?php
-  $css = ['/css/style.css', '/css/search.css', '/css/geral/navbar.css'];
+  $css = ['/css/style.css', '/css/cliente/search.css', '/css/geral/navbar.css'];
   require_once('./utils/head.php')
 ?>
 
