@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS lojas_seguidas (
   id_loja_seguida BIGINT AUTO_INCREMENT PRIMARY KEY,
   id_usuario BIGINT NOT NULL,
   id_loja BIGINT NOT NULL,
-  status_seguida BOOL NOT NULL,
+  status_seguida BOOLEAN NOT NULL,
   CONSTRAINT fk_ls_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   CONSTRAINT fk_ls_loja FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
