@@ -27,6 +27,7 @@ body {
 main {
     padding: 32px 176px;
     margin-top: 64px;
+    height: calc(100vh - 32px);
 }
 
 .f-column {
@@ -58,7 +59,6 @@ main {
     padding-top: 32px;
     padding-bottom: 112px;
 }
-
 
 .btn-icon {
     width: 18px;
@@ -105,6 +105,11 @@ main {
     font-size: 16px;
     font-weight: 600;
     transition: all .3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    gap: 8px;
 
     &:hover {
         cursor: pointer;
@@ -112,18 +117,6 @@ main {
         transform: translateY(-4px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
-}
-
-.store-div {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.title-store {
-  color: var(--LaranjaMaisFeliz);
-  margin-bottom: 16px;
 }
 
 /* Card Loja */
@@ -137,7 +130,14 @@ main {
   align-items: center;
   padding: 10px;
   width: 100%; 
+  transition: all .3s ease;
 }
+
+.card-result:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.5);
+  }
 
 .image-loja {
   width: 100px;
@@ -485,11 +485,10 @@ main {
     }
 
     main {
-        padding: 8px;
+        padding: 8px !important;
         padding-top: 24px;
         margin-top: 0;
         margin-bottom: 64px;
-
     }
 
     .top-bar {

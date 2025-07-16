@@ -29,6 +29,18 @@
      ;
  }
 
+  .cadastro-message {
+    margin-top: 16px;
+    :hover{
+        cursor: pointer;
+    }
+    a {
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--LaranjaMaisFeliz);
+    }
+ }
+
  .login-title {
      display: flex;
      justify-content: center;
