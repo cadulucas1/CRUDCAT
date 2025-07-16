@@ -5,7 +5,7 @@ require_once __DIR__ . "/../../models/cliente/SuporteModel.php";
 class SuporteController extends RenderView {
 
     public function suporte() {
-        $this->loadView('geral/suporte' ,[]);
+        $this->loadView('cliente/suporte' ,[]);
     }
 
     public function enviarSuporte()
