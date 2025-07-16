@@ -23,4 +23,5 @@
     
 </body>
 <script type="module" src="./public/js/geral/home.js"></script>
+<script type="module" src="./app/components/js/giftCard.js"></script>
 </html>
