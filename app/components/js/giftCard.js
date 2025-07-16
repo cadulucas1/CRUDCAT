@@ -19,9 +19,9 @@ function renderGiftCard() {
 
 export default renderGiftCard;
 
-const container = document.querySelector('.store-div');
+const container = document.querySelector('.cardgift-div');
 if (container) {
   container.innerHTML += renderGiftCard();
 } else {
-  console.error("Container .store-div não encontrado!");
+  console.error("Container .cardgift-div não encontrado!");
 }

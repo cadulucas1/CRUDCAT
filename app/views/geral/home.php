@@ -15,22 +15,29 @@ require_once('./utils/head.php')
     include './app/components/php/topbar.php';
     ?>
 
-    <main class="f-column">
-        <div class="store-div">
-            <gift-card></gift-card>
+    <main class="home-container-geral">
+        <div class="home-banner-container">
+            <picture>
+                <source srcset="./public/images/fotos/banner_mobile.png" media="(max-width: 425px)">
+                <img src="./public/images/fotos/banner_desktop.png">
+            </picture>
         </div>
+
         <div id="main-content">
             <h2 class="title-store">
                 Lojas Seguidas
             </h2>
             <ul class="store-div">
             </ul>
-
         </div>
 
+        <div class="card-div-container">
+            <h2 class="title-store">
+                Tarefa Diária
+            </h2>
+            <ul class="cardgift-div"></ul>
+        </div> 
     </main>
-
-
 </body>
 <script type="module" src="./public/js/geral/home.js"></script>
 <script type="module" src="./app/components/js/giftCard.js"></script>
