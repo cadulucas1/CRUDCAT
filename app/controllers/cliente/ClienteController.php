@@ -15,7 +15,13 @@ class ClienteController extends RenderView
         $this->loadView('cliente/cadastro', []);
     }
 
-    public function getLojasSeguidas() {
+    public function editarPerfil()
+    {
+        $this->loadView('cliente/editarPerfil', []);
+    }
+
+    public function getLojasSeguidas()
+    {
         if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
             http_response_code(405);
             exit;
