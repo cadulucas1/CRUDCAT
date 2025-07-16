@@ -1,6 +1,10 @@
+main {
+  padding: 0 !important;
+}
+
 .perfil_loja_banner {
   width: 100%;
-  aspect-ratio: 3 / 1;
+  aspect-ratio: 4 / 1;
   max-width: 100%;
   object-fit: cover;
   object-position: center 30%;
@@ -11,20 +15,15 @@
   position: absolute;
   display: flex;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  
-
-  bottom: -20%;
+  padding: 0 64px;
+  bottom: -32%;
 }
 
 .perfil_loja_banner_container {
   position: relative;
   width: 100%;
-}
-
-main {
-  padding: 0 !important;  
 }
 
 .perfil_loja_pfp {
@@ -35,15 +34,14 @@ main {
   justify-content: flex-start;
   max-width: 632px;
   gap: 24px;
-
-  h1 {
-    font-size: 32px;
-    text-align: center;
-    font-weight: 500;
-    line-height: 90%;
-  }
 }
 
+.perfil_loja_pfp h1 {
+  font-size: 32px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 90%;
+}
 
 .perfil_loja_pfp_pic {
   justify-self: center;
@@ -53,12 +51,12 @@ main {
   border-radius: 50%;
 }
 
-.perfil_loja_container_buttons{
+.perfil_loja_container_buttons {
   grid-column: 3;
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  padding-top: 24px;
+  padding-top: 88px;
 }
 
 #perfil_loja_heart {
@@ -70,8 +68,6 @@ main {
   border: none;
   padding: 0;
   cursor: pointer;
-  /* width: 100%; */
-
   grid-column: 3;
   display: flex;
   justify-content: center;
@@ -91,16 +87,11 @@ main {
   transition: all 0.2s ease-out;
 }
 
-#perfil_loja_heart {
-  display: none;
-}
-
 .perfil_loja_button_base {
   background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
-
   display: flex;
   justify-content: center;
   gap: 4px;
@@ -109,6 +100,7 @@ main {
 #perfil_loja_icon {
   display: none;
 }
+
 .perfil_loja_button {
   display: flex;
   align-items: center;
@@ -122,7 +114,7 @@ main {
   transition: all 0.2s ease-out;
 }
 
-.perfil_loja_button_base_icon:hover{
+.perfil_loja_button_base_icon:hover {
   transform: scale(1.1);
   transition: transform 0.2s ease-in-out;
 }
@@ -135,8 +127,8 @@ main {
 
 .perfil_loja_grid_dados_loja {
   display: flex;
-  margin-top: 96px;
-  padding: 0 24px;
+  margin-top: 138px;
+  padding: 0 64px;
   flex-direction: column;
   row-gap: 8px;
 }
@@ -172,13 +164,13 @@ main {
   color: var(--LaranjaMaisFeliz);
 }
 
-.perfil_loja_container_dados{
+.perfil_loja_container_dados {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.perfil_loja_container_dados_direita{
+.perfil_loja_container_dados_direita {
   display: flex;
   align-items: flex-end;
   gap: 4px;
@@ -190,73 +182,90 @@ main {
   width: 24px;
 }
 
-.perfil_loja_grid_anuncios{
+.perfil_loja_grid_anuncios {
   height: 100%;
   display: flex;
-  padding: 24px 24px 0 24px;
+  padding: 24px 64px 32px 64px;
   flex-direction: column;
   row-gap: 16px;
 }
 
-.perfil_loja_imagens_anuncios{
+.perfil_loja_imagens_anuncios {
   border-radius: 8px;
   height: 120px;
   width: 100%;
   background-color: var(--CinzaClaro);
 }
 
-  @media (max-width: 1024px){
-
-    .perfil_loja_pfp_pic{
-      width: 216px;
-      height: 216px;
-    }
+@media (max-width: 1024px) {
+  .perfil_loja_grid_dados_loja {
+    margin-top: 100px;
   }
 
-  @media (max-width: 768px)  {
-    .perfil_loja_content_pfp{
-      width: 100%;
-      position: absolute;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      justify-content: center;
-      align-items: center;
-      bottom: -40%;
-    }
+  .perfil_loja_pfp_pic {
+    width: 216px;
+    height: 216px;
+  }
+}
 
-    .perfil_loja_pfp_pic{
-      width: 192px;
-      height: 192px;
-    }
+@media (max-width: 768px) {
+  .perfil_loja_content_pfp {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    bottom: -40%;
   }
 
-  .perfil_loja_grid_dados_loja{
-    padding: 0 40px;
+  .perfil_loja_pfp_pic {
+    width: 192px;
+    height: 192px;
   }
-    
-  @media (max-width: 425px){
 
-
-    .perfil_loja_pfp_pic{
-      width: 120px;
-      height: 120px;
-    }
-
-    .perfil_loja_content_pfp {
-      width: 100%;
-      position: absolute;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      justify-content: center;
-      align-items: center;
-      padding: 0 16px;
-    
-      bottom: -60%;
-    }
-
-    .perfil_loja_grid_dados_loja{
-      padding: 0 24px;
-    }
-    
-
+  .perfil_loja_grid_dados_loja {
+    padding: 0 24px !important;
+    margin-top: 88px;
   }
+
+  .perfil_loja_grid_anuncios {
+    padding: 24px 24px 32px 24px;
+  }
+}
+
+@media (max-width: 425px) {
+  .perfil_loja_pfp_pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .perfil_loja_content_pfp {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    bottom: -48%;
+  }
+
+  .perfil_loja_grid_dados_loja {
+    padding: 0 24px !important;
+    margin-top: 72px;
+  }
+
+  .perfil_loja_container_buttons {
+    padding-top: 48px;
+  }
+
+  .perfil_loja_banner {
+    aspect-ratio: 3/1;
+  }
+
+  .perfil_loja_grid_anuncios {
+    padding: 24px 24px 32px 24px;
+  }
+}

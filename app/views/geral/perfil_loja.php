@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <?php
-    $css = ["/css/geral/navbar.css", "/css/perfil_loja.css"];
+    $css = ["/css/geral/navbar.css", "/css/cliente/perfil_loja.css"];
     require_once('./utils/head.php');
 ?>
 </head>
