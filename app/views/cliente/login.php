@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-</head>
 <?php
-$css = ['/css/cliente/login.css'];
+$css = ['/css/cliente/login.css', '/css/geral/navbar.css'];
 require_once('./utils/head.php')
 ?>
 
 <body>
+    <?php
+        include './app/components/php/navbar.php';
+        include './app/components/php/topbar.php'; 
+    ?>
     <div class="login-card">
         <form id="formLogin" novalidate>
             <h2 class="login-title">Entrar</h2>

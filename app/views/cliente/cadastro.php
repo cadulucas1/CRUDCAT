@@ -2,11 +2,15 @@
 <html lang="pt-br">
 
 <?php
-$css = ['/css/cliente/cadastro.css'];
+$css = ['/css/cliente/cadastro.css', '/css/geral/navbar.css'];
 require_once('./utils/head.php')
 ?>
 
 <body>
+    <?php
+        include './app/components/php/navbar.php';
+        include './app/components/php/topbar.php'; 
+    ?>
     <div class="cadastro-card">
         <form id="formCadastro" novalidate> 
             <h2 class="cadastro-title">Cadastre-se</h2>
