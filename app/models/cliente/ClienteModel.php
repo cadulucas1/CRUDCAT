@@ -29,6 +29,8 @@ class ClienteModel
             ON ls.id_loja = l.id_loja
         WHERE 
           ls.id_usuario = :idUser
+        AND 
+          ls.status_seguida = TRUE
     ";
 
     $stmt = $this->db->getConnection()->prepare($sql);
@@ -38,6 +40,21 @@ class ClienteModel
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     return empty($dados) ? null : $dados;
+  }
+
+  public function toggleSeguirLoja(int $idUser, int $idLoja, bool $seguir): bool {
+    $sql = $seguir
+      ? "INSERT INTO lojas_seguidas (id_usuario, id_loja, status_seguida)
+         VALUES (:u, :l, true)
+         ON DUPLICATE KEY UPDATE status_seguida = true"
+      : "UPDATE lojas_seguidas
+         SET status_seguida = false
+         WHERE id_usuario = :u AND id_loja = :l";
+  
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->bindValue(':u', $idUser, PDO::PARAM_INT);
+    $stmt->bindValue(':l', $idLoja, PDO::PARAM_INT);
+    return $stmt->execute();
   }
 
 }  

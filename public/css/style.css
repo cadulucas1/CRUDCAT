@@ -216,6 +216,60 @@ main {
   margin-left: 2px;
 }
 
+.product-card {
+  display: flex;
+  background-color: #dad5d5;
+  align-items: flex-start;
+  justify-content: center;
+  width: 264px;
+  padding: 8px;
+  border-radius: 5px;
+  gap: 8px;
+  position: relative;
+  img {
+      width: 100% !important;
+  }
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2B2B2B;
+  .product-status {
+      font-size: 16px;
+      color: #aaaaaa;
+      font-weight: 500;
+      
+  }
+}
+
+.promo-value {
+  position: absolute;
+  background-color: var(--AmareloMel);
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 5px;
+  top: 16px;
+  right: 16px;
+}
+
+.product-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--LaranjaBase);
+  align-items: end;
+  gap: 8px;
+  p {
+      text-decoration: line-through;
+      color: #aaaaaa;
+      font-size: 16px;
+      font-weight: 500;
+  }
+}
+
+
 /* TOAST (MENSAGEM) */
 
 .toast-container {
