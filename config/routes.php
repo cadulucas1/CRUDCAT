@@ -10,6 +10,7 @@ $routes = [
     '/login' => 'cliente/ClienteController@login',
     '/cadastro' => 'cliente/ClienteController@cadastro',
     '/getLojasSeguidas' => 'cliente/ClienteController@getLojasSeguidas',
+    '/perfil' => 'cliente/ClienteController@perfil',
 ]
 
 ?>
