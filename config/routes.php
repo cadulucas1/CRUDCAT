@@ -11,6 +11,9 @@ $routes = [
     '/cadastro' => 'cliente/ClienteController@cadastro',
     '/getLojasSeguidas' => 'cliente/ClienteController@getLojasSeguidas',
     '/perfil' => 'cliente/ClienteController@perfil',
+    '/perfil-salvar' => 'cliente/ClienteController@salvarPerfil',
+
+
 ]
 
 ?>
