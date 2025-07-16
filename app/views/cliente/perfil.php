@@ -38,6 +38,7 @@ require_once('./utils/head.php');
 
             <button type="button" class="btn-base" id="btnEditar">Editar</button>
             <button type="submit" class="btn-base" id="btnConfirmar" disabled>Confirmar</button>
+            <button type="submit" onclick="pag('login')" class="btn-base vermelho" id="btnSair">Sair</button>
         </form>
     </main>
 
