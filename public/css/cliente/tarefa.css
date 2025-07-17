@@ -13,6 +13,7 @@
     flex-direction: column;
     gap: 8px;
     padding: 8px;
+    justify-content: space-around;
     h3 {
         color: #fff;
     }
@@ -43,5 +44,11 @@
         background-color: var(--CinzaClaro);
         transform: none !important;
         cursor: none !important;
+    }
+}
+
+@media (max-width: 425px) { 
+    .tarefas-div {
+        grid-template-columns: 1fr;
     }
 }
