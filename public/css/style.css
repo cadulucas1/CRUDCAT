@@ -514,6 +514,64 @@ main {
     }
   }
 
+  /* Card-gift */
+
+.card-result-gift {
+  background-color: white;
+  border-radius: 10px;
+  border: var(--BrancoGelo) 4px solid;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%; 
+  transition: all .3s ease;
+}
+
+.card-result-gift:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px var(--BrancoGelo);
+  }
+
+.image-gift {
+  width: 100px;
+  height: 100px;
+  background-color: #f0f0f0; 
+  border-radius: 50%;
+  margin-right: 15px;
+  flex-shrink: 0; 
+  display: flex;
+  overflow: hidden;
+}
+
+.dados-gift {
+  flex-grow: 1; 
+}
+
+.gift-nome {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px 0px 15px 0px;
+    color: var(--LaranjaMaisFeliz);
+}
+
+.gift-descricao{
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    color: #292929;
+    margin-top: 8px;;
+    margin-bottom: 1px;
+    margin-left: 3px;
+}
+
+.gift-icone {
+  width: 100%; 
+}
+
 @media (max-width: 425px) {
   .card-result {
     flex-direction: column;
@@ -523,6 +581,20 @@ main {
     }
 
     .dados-loja {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  .card-result-gift {
+    flex-direction: column;
+    gap: 16px;
+    * {
+      margin: 0;
+    }
+
+    .dados-gift {
       display: flex;
       flex-direction: column;
       gap: 8px;
