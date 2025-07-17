@@ -142,5 +142,79 @@ class GeralModel
     }, $rows);
   }
 
-    
+  public function buscarLojasPorNomeOuEndereco(string $termo): array {
+    $sql = "
+        SELECT 
+            id_loja,
+            nome_loja,
+            endereco_loja,
+            num_endereco_loja,
+            horario_abertura,
+            horario_fechamento
+        FROM loja
+        WHERE 
+            nome_loja COLLATE utf8mb4_general_ci LIKE :termo OR
+            endereco_loja COLLATE utf8mb4_general_ci LIKE :termo OR
+            CONCAT(num_endereco_loja, ' ', endereco_loja) COLLATE utf8mb4_general_ci LIKE :termo
+        LIMIT 20
+    ";
+
+      $stmt = $this->db->getConnection()->prepare($sql);
+      $stmt->bindValue(':termo', '%' . $termo . '%', PDO::PARAM_STR);
+      $stmt->execute();
+
+      $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      // Calcular status "Aberto" ou "Fechado"
+      $agora = new DateTime('now', new DateTimeZone('America/Sao_Paulo'));
+      foreach ($dados as &$loja) {
+          $abertura = DateTime::createFromFormat('H:i:s', $loja['horario_abertura']);
+          $fechamento = DateTime::createFromFormat('H:i:s', $loja['horario_fechamento']);
+
+          if ($abertura && $fechamento && $agora >= $abertura && $agora <= $fechamento) {
+              $loja['status'] = 'Aberto';
+          } else {
+              $loja['status'] = 'Fechado';
+          }
+      }
+
+      return $dados;
+  }
+
+  public function getAllLojas(): array {
+    $sql = "
+        SELECT 
+            id_loja,
+            nome_loja,
+            endereco_loja,
+            num_endereco_loja,
+            horario_abertura,
+            horario_fechamento
+        FROM loja
+        LIMIT 50
+    ";
+
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->execute();
+
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Calcular status "Aberto" ou "Fechado"
+    $agora = new DateTime('now', new DateTimeZone('America/Sao_Paulo'));
+
+    foreach ($dados as &$loja) {
+        $abertura = DateTime::createFromFormat('H:i:s', $loja['horario_abertura']);
+        $fechamento = DateTime::createFromFormat('H:i:s', $loja['horario_fechamento']);
+
+        if ($abertura && $fechamento && $agora >= $abertura && $agora <= $fechamento) {
+            $loja['status'] = 'Aberto';
+        } else {
+            $loja['status'] = 'Fechado';
+        }
+    }
+
+    return $dados;
+  }
+
+
 }  

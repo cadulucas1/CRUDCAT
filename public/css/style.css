@@ -572,7 +572,23 @@ main {
   width: 100%; 
 }
 
+.footer {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--CinzaEscuro); /* ou outra cor que combine com seu site */
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
 @media (max-width: 425px) {
+  
+  .loja-nome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .card-result {
     flex-direction: column;
     gap: 16px;
@@ -622,6 +638,12 @@ main {
       visibility: visible;
       display: flex;
     }
+
+    .footer {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+    margin-bottom: 64px;
+  }
 }
 
 @media (max-width: 1024px) {
