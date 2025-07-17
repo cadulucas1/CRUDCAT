@@ -18,7 +18,8 @@
     <form class="form-suporte" method="post" action="">
       <div class="div-titulo-suporte">
         <h1 class="titulo-suporte">Suporte</h1>
-        <p class="texto-suporte">Preencha o formulário abaixo para entrar em contato com o suporte.</p>
+        <p class="texto-suporte">Preencha o formulário abaixo para entrar em contato com a equipe BuyAtHome
+        </p>
       </div>
       <div class="div-input-assunto">
         <input type="text" placeholder="Assunto" class="input-assunto" name="assunto">
@@ -35,6 +36,7 @@
 
     </form>
   </div>
+  <script src="./app/components/js/footer.js"></script>
 </body>
 <script type="module" src="./public/js/cliente/suporte.js"></script>
 </html>
