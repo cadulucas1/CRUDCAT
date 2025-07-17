@@ -28,7 +28,6 @@ require_once('./utils/head.php');
                 <input type="tel" name="telefone" placeholder="(67) 99999-9999" value="<?= $usuario['telefone_usuario'] ?? '' ?>" readonly />
             </div>
 
-            <!-- Campo senha, oculto inicialmente -->
             <div class="input-group" id="campo-senha" style="display:none; position: relative;">
                 <input type="password" name="senha" placeholder="Senha" readonly />
                 <button type="button" id="toggleSenha" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background:none; border:none; cursor:pointer;">
@@ -36,7 +35,6 @@ require_once('./utils/head.php');
                 </button>
             </div>
 
-            <!-- Campo confirmar senha, oculto inicialmente -->
             <div class="input-group" id="campo-confirmar-senha" style="display:none; position: relative;">
                 <input type="password" name="confirmar_senha" placeholder="Confirmar nova senha" readonly />
                 <button type="button" id="toggleConfirmarSenha" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background:none; border:none; cursor:pointer;">
@@ -82,13 +80,11 @@ require_once('./utils/head.php');
         const toggleSenha = document.getElementById('toggleSenha');
         const toggleConfirmarSenha = document.getElementById('toggleConfirmarSenha');
 
-        // Inicialmente só campos que não são senha ficam readonly e botão confirmar desabilitado
         inputs.forEach(input => input.setAttribute('readonly', true));
         inputSenha.setAttribute('readonly', true);
         inputConfirmarSenha.setAttribute('readonly', true);
         btnConfirmar.disabled = true;
 
-        // Função para alternar mostrar/ocultar senha
         function togglePasswordVisibility(input, button) {
             if (input.type === "password") {
                 input.type = "text";
@@ -108,14 +104,12 @@ require_once('./utils/head.php');
         });
 
         btnEditar.addEventListener('click', () => {
-            // Remove readonly dos inputs exceto senha que está oculto
+
             inputs.forEach(input => input.removeAttribute('readonly'));
 
-            // Exibe os campos de senha
             campoSenha.style.display = 'flex';
             campoConfirmarSenha.style.display = 'flex';
 
-            // Remove readonly dos campos de senha
             inputSenha.removeAttribute('readonly');
             inputConfirmarSenha.removeAttribute('readonly');
 
@@ -124,6 +118,7 @@ require_once('./utils/head.php');
             gerarToast('Agora você pode editar seus dados.', 'info');
         });
     </script>
+    
 </body>
 
 </html>
