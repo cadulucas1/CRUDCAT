@@ -62,11 +62,12 @@ INSERT INTO cupom (
   data_expiracao
 )
 VALUES
-  ('PROMO2026A', 'Desconto de boas‑vindas 2026',   5.00,  500, '2026-12-31'),
-  ('PROMO2026B', 'Promoção verão 2026',            10.00, 250, '2026-06-30'),
-  ('PROMO2026C', 'Oferta especial 2026',           15.00, 600, '2026-09-30'),
-  ('PROMO2026D', 'Desconto fidelidade 2026',       20.00, 100, '2026-11-30'),
-  ('PROMO2026E', 'Cupom festa de fim de ano 2026', 25.00, 750, '2026-12-15');
+  ('PROMO2026A', 'Desconto de boas‑vindas 2026',   5.00, 125, '2026-12-31'),  -- mais acessível, menor desconto
+  ('PROMO2026B', 'Promoção verão 2026',            10.00, 250, '2026-06-30'), -- valor fixo, conforme pedido
+  ('PROMO2026C', 'Oferta especial 2026',           15.00, 400, '2026-09-30'), -- média de esforço/premiação
+  ('PROMO2026D', 'Desconto fidelidade 2026',       20.00, 600, '2026-11-30'), -- valor elevado, pontos também
+  ('PROMO2026E', 'Cupom festa de fim de ano 2026', 25.00, 800, '2026-12-15'); -- maior benefício, maior pontuação
+
 
 -- 2. Atribui 500 pontos ao usuário de id 1
 INSERT INTO pontos_usuario (id_usuario, pontos_acumulados)
@@ -87,7 +88,7 @@ VALUES
     'PROMO2026F', 
     'Desconto relâmpago 2026', 
     30.00,        -- 30% de desconto
-    300,          -- custa 300 pontos
+    900,          -- custa 300 pontos
     '2026-10-31'
   );
 
@@ -101,3 +102,26 @@ VALUES
     1,
     LAST_INSERT_ID()  -- usa o ID gerado pelo INSERT anterior
   );
+
+-- Inserir tarefas
+INSERT INTO tarefas (nome_tarefa, descricao, pontos_tarefa) VALUES
+  ('Cadastrar telefone', 'Adicione um número de telefone ao seu perfil.', 50),
+  ('Completar perfil', 'Preencha todas as informações do seu perfil.', 100),
+  ('Seguir uma loja', 'Siga uma loja para receber novidades.', 75),
+  ('Resgatar um cupom', 'Use um cupom pela primeira vez.', 150);
+
+-- Associar tarefas ao cliente 1 (cliente já existente)
+-- Supondo que os IDs das tarefas inseridas acima foram de 1 a 4
+
+INSERT INTO tarefa_usuario (id_tarefa, id_cliente, status_tarefa) VALUES
+  (1, 1, TRUE),   -- tarefa "Cadastrar telefone" concluída
+  (2, 1, FALSE),  -- tarefa "Completar perfil"
+  (3, 1, FALSE),  -- tarefa "Seguir uma loja"
+  (4, 1, FALSE);  -- tarefa "Resgatar um cupom"
+
+-- Nova tarefa
+INSERT INTO tarefas (nome_tarefa, descricao, pontos_tarefa) VALUES
+  ('Responder formulário de satisfação', 'Complete o formulário de avaliação da sua experiência com a plataforma.', 80);
+-- Associando nova tarefa ao cliente 1
+INSERT INTO tarefa_usuario (id_tarefa, id_cliente, status_tarefa) VALUES
+  (5, 1, FALSE); -- tarefa "Responder formulário de satisfação"

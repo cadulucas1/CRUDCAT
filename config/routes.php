@@ -21,7 +21,9 @@ $routes = [
     '/toggleSeguirLoja' => 'cliente/ClienteController@toggleSeguirLoja',
     '/cupons' => 'cliente/ClienteController@cupons',
     '/comprar-cupom' => 'cliente/ClienteController@comprarCupom',
-    '/search-lojas' => 'cliente/ClienteController@searchLojas'
+    '/search-lojas' => 'cliente/ClienteController@searchLojas',
+    '/tarefas' => 'cliente/ClienteController@tarefas',
+    '/realizar-tarefa' => 'cliente/ClienteController@realizarTarefa',
 ]
 
 ?>

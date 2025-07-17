@@ -33,15 +33,15 @@ require_once('./utils/head.php')
             </ul>
         </div>
 
-        <div class="card-div-container">
+        <div class="card-div-container" onclick="pag('tarefas')">
             <h2 class="title-store">
                 Tarefa Diária
             </h2>
             <ul class="cardgift-div"></ul>
         </div> 
     </main>
-    <script src="./app/components/js/footer.js"></script>
 </body>
 <script type="module" src="./public/js/geral/home.js"></script>
+<script src="./app/components/js/footer.js"></script>
 <script type="module" src="./app/components/js/giftCard.js"></script>
 </html>

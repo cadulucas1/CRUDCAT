@@ -1,0 +1,47 @@
+.tarefas-title {
+    font-size: 32px;
+    color: var(--LaranjaMaisFeliz);
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.tarefa-item {
+    background-color: var(--LaranjaBase);
+    border-radius: 5px;
+    border: var(--LaranjaMaisFeliz) 2px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    h3 {
+        color: #fff;
+    }
+    p {
+        color: var(--BrancoGelo);
+    }
+}
+
+.tarefa-pontos {
+    font-weight: bold;
+}
+
+.tarefas-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.btn-base:hover {
+    background-color: var(--LaranjaMaisFeliz) !important;
+}
+
+.disabled {
+    background-color: var(--CinzaClaro);
+    color: var(--CinzaEscuro) !important;
+    pointer-events: none !important;
+    :hover {
+        background-color: var(--CinzaClaro);
+        transform: none !important;
+        cursor: none !important;
+    }
+}

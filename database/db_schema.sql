@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS lojas_seguidas (
 
 
 CREATE TABLE IF NOT EXISTS suporte (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_suporte INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario BIGINT NOT NULL,
     assunto VARCHAR(255) NOT NULL,
     mensagem TEXT NOT NULL,
@@ -106,5 +106,24 @@ CREATE TABLE IF NOT EXISTS pontos_usuario (
       ON UPDATE CASCADE
       ON DELETE CASCADE
 );
+
+-- Tabela de tarefas
+CREATE TABLE IF NOT EXISTS tarefas (
+    id_tarefa BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome_tarefa VARCHAR(255),
+    descricao VARCHAR(255),
+    pontos_tarefa BIGINT
+);
+
+-- Tabela de tarefas por usuário com FKs
+CREATE TABLE IF NOT EXISTS tarefa_usuario (
+    id_tarefa_usuario BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id_tarefa BIGINT NOT NULL,
+    id_cliente BIGINT NOT NULL,
+    status_tarefa BOOLEAN,
+    CONSTRAINT fk_tarefa_usuario_tarefa FOREIGN KEY (id_tarefa) REFERENCES tarefas(id_tarefa),
+    CONSTRAINT fk_tarefa_usuario_cliente FOREIGN KEY (id_cliente) REFERENCES usuario(id_usuario)
+);
+
 
 ALTER TABLE loja CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;

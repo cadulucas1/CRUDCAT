@@ -359,4 +359,59 @@ class ClienteController extends RenderView
         echo json_encode($lojas);
     }
 
+    public function tarefas() {
+
+        $model = new ClienteModel;
+
+        $idUser = 1;
+
+        $tarefas = $model->listarTarefasComStatus($idUser);
+
+        $this->loadView('cliente/tarefa', [
+            'tarefas' => $tarefas
+        ]);
+    }
+
+    public function realizarTarefa() {
+        header('Content-Type: application/json');
+
+        $dados = json_decode(file_get_contents('php://input'), true);
+
+        if (!isset($dados['id_tarefa'], $dados['id_user'])) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Parâmetros obrigatórios ausentes.'
+            ]);
+            return;
+        }
+
+        $model = new ClienteModel;
+
+        $idTarefa = (int) $dados['id_tarefa'];
+        $idUsuario = (int) $dados['id_user'];
+
+        try {
+            $resultado = $model->marcarTarefaComoRealizada($idUsuario, $idTarefa);
+
+            if ($resultado) {
+                echo json_encode([
+                    'success' => true,
+                    'message' => 'Tarefa marcada como realizada com sucesso.'
+                ]);
+            } else {
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Tarefa já realizada ou falha ao marcar.'
+                ]);
+            }
+
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Erro no servidor: ' . $e->getMessage()
+            ]);
+        }
+    }
+
 }
