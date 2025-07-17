@@ -14,7 +14,7 @@ class ClienteModel
   // -- buscar por email para login
     public function buscarPorEmail(string $email): ?array
 {
-    $sql = "SELECT * FROM usuario WHERE email_usuario = :email LIMIT 1";
+    $sql = "SELECT * FROM usuario WHERE email_usuario = :email ";
     $stmt = $this->db->getConnection()->prepare($sql);
     $stmt->bindValue(':email', $email, PDO::PARAM_STR);
     $stmt->execute();

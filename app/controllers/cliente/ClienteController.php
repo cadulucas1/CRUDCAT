@@ -38,7 +38,7 @@ public function login()
         exit;
     }
 
-    // busca usuário no banco
+    // busca usuário no banco   
     $model = new ClienteModel();
     $usuario = $model->buscarPorEmail($email);
 
@@ -46,13 +46,14 @@ public function login()
         echo json_encode(['success' => false, 'message' => 'E-mail ou senha inválidos.']);
         exit;
     }
+
     // se login bem sucessedido inicia sessão 
     session_start();
     $_SESSION['usuario_id'] = $usuario['id_usuario'];
     $_SESSION['usuario_nome'] = $usuario['nome_usuario'];
 
     // retorna sucesso e redirecionamento
-    echo json_encode(['success' => true, 'redirect' => ' /CRUDCAT/perfil']);
+    echo json_encode(['success' => true, 'redirect' => '/CRUDCAT/perfil']);
     exit;
 }
 

@@ -38,12 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
       formData.append('email', email);
       formData.append('senha', senha);
 
-      const response = await fetch('/CRUDCAT/login', {
-        method: 'POST',
-        body: formData
-      });
+  const response = await fetch('/CRUDCAT/login', {
+  method: 'POST',
+  body: formData
+  });
 
-      const result = await response.json();
+  const contentType = response.headers.get("content-type");
+
+  if (!response.ok || !contentType.includes("application/json")) {
+    throw new Error("Resposta não é JSON ou status inválido");
+  }
+
+  const result = await response.json();
+
 
       if (result.success) {
         window.location.href = result.redirect;
