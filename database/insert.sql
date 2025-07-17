@@ -10,7 +10,16 @@ INSERT INTO loja (id_loja, nome_loja, num_endereco_loja, endereco_loja, horario_
 VALUES
   (1, 'Mercado Central', 100, 'Rua das Flores', '08:00:00', '20:00:00'),
   (2, 'Padaria Pão Quente', 50, 'Av. Principal', '06:00:00', '18:00:00'),
-  (3, 'Hortifruti Verde', 200, 'Rua do Campo', '07:00:00', '19:00:00');
+  (3, 'Hortifruti Verde', 200, 'Rua do Campo', '07:00:00', '19:00:00'),
+  (4, 'Supermercado Bom Preço', 300, 'Av. das Américas', '08:00:00', '22:00:00'),
+  (5, 'Farmácia Saúde', 150, 'Rua dos Médicos', '08:00:00', '21:00:00'),
+  (6, 'Loja de Roupas Fashion', 75, 'Rua da Moda', '10:00:00', '20:00:00'),
+  (7, 'Casa das Ferramentas', 120, 'Rua do Trabalho', '07:30:00', '19:30:00'),
+  (8, 'Livraria Cultura', 90, 'Av. dos Escritores', '09:00:00', '20:00:00'),
+  (9, 'Eletrônicos Tech', 45, 'Rua da Tecnologia', '10:00:00', '22:00:00'),
+  (10, 'Pet Shop Amigos', 180, 'Rua dos Animais', '08:00:00', '20:00:00'),
+  (11, 'Café & Cia', 65, 'Praça Central', '07:00:00', '18:00:00'),
+  (12, 'Academia Fit Vida', 55, 'Av. Saúde', '06:00:00', '23:00:00');
 
 -- Inserts de lojas seguidas pelo usuário
 INSERT INTO lojas_seguidas (id_loja_seguida, id_usuario, id_loja, status_seguida)

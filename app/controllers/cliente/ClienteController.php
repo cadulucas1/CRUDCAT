@@ -335,4 +335,28 @@ class ClienteController extends RenderView
         }
         exit;
     }
+
+    public function searchLojas() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+            http_response_code(405);
+            echo json_encode(['erro' => 'Método não permitido']);
+            exit;
+        }
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        $query = isset($_GET['query']) ? trim($_GET['query']) : '';
+
+        if (strlen($query) < 2) {
+            echo json_encode([]);
+            exit;
+        }
+
+        require_once __DIR__ . '/../../models/geral/GeralModel.php';
+        $model = new GeralModel();
+        $lojas = $model->buscarLojasPorNomeOuEndereco($query);
+
+        echo json_encode($lojas);
+    }
+
 }
