@@ -109,5 +109,76 @@ class ClienteModel
         }
     }
 
+    public function getPontosUser(int $idUser): ?int
+  {
+    $sql = "
+      SELECT
+        COALESCE(p.pontos_acumulados, 0) AS pontos
+      FROM usuario u
+      LEFT JOIN pontos_usuario p
+        ON p.id_usuario = u.id_usuario
+      WHERE u.id_usuario = :idUser
+      LIMIT 1
+    ";
 
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->bindValue(':idUser', $idUser, PDO::PARAM_INT);
+
+    if (! $stmt->execute()) {
+        return null;
+    }
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (! $row) {
+        return 0;
+    }
+
+    return (int) $row['pontos'];
+  }
+
+  public function getValorPontosCupom(int $idCupom): ?int
+    {
+        $sql = "
+            SELECT valor_pontos
+            FROM cupom
+            WHERE id_cupom = :idCupom
+            LIMIT 1
+        ";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->bindValue(':idCupom', $idCupom, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row ? (int)$row['valor_pontos'] : null;
+    }
+
+  public function atualizarPontosUsuario(int $idUser, int $novoSaldo): bool
+    {
+        $sql = "
+            INSERT INTO pontos_usuario (id_usuario, pontos_acumulados)
+            VALUES (:idUser, :pontos)
+            ON DUPLICATE KEY
+            UPDATE pontos_acumulados = :pontos
+        ";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->bindValue(':idUser', $idUser, PDO::PARAM_INT);
+        $stmt->bindValue(':pontos', $novoSaldo, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+  public function salvarUsuarioCupom(int $idUser, int $idCupom): bool
+    {
+        $sql = "
+            INSERT INTO usuario_cupom (id_usuario, id_cupom)
+            VALUES (:idUser, :idCupom)
+        ";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->bindValue(':idUser',  $idUser,  PDO::PARAM_INT);
+        $stmt->bindValue(':idCupom', $idCupom, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+  public function getConnection(): PDO
+    {
+        return $this->db->getConnection();
+    }
 }  
