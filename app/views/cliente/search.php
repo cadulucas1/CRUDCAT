@@ -28,6 +28,7 @@
       
     </ul>
   </div>
+  <script src="./app/components/js/footer.js"></script>
 </body>
 <script type="module" src="./public/js/cliente/search.js"></script>
 </html>

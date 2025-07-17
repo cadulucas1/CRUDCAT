@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .form-suporte{
@@ -92,9 +93,7 @@
 }
 
 @media (min-width: 769px) {
-    .page-container {
-        margin-top: 70px;
-    }
+
     .titulo-suporte{
         font-size: 26px;
 }

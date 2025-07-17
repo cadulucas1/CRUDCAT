@@ -23,7 +23,7 @@ require_once('./utils/head.php')
             </picture>
         </div>
 
-        <div id="main-content">
+        <div id="main-content" class="main-content">
             <h2 class="title-store">
                 Lojas Seguidas
             </h2>
@@ -38,9 +38,7 @@ require_once('./utils/head.php')
             <ul class="cardgift-div"></ul>
         </div> 
     </main>
-    <footer class="footer">
-        <p>© 2025 Todos os direitos reservados.</p>
-    </footer>
+    <script src="./app/components/js/footer.js"></script>
 </body>
 <script type="module" src="./public/js/geral/home.js"></script>
 <script type="module" src="./app/components/js/giftCard.js"></script>

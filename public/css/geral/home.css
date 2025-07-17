@@ -94,6 +94,10 @@ main {
     align-items: center;
 }
 
+.main-content{
+    width: 100%;
+}
+
 .product-session {
     display: flex;
     flex-direction: column;
@@ -107,6 +111,10 @@ main {
     font-size: 32px;
     color: var(--AmareloMel);
     font-weight: 500;
+}
+
+.main-content{
+    width: 100%;
 }
 
 .store-div {
@@ -162,6 +170,12 @@ main {
 }
 
 @media (max-width: 768px) {
+
+
+    .title-store{
+        display: flex;
+        justify-content: center;
+    }
     .product-line {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -177,6 +191,10 @@ main {
         width: 100%;
         height: fit-content;
         padding: 0 16px;
+    }
+
+    .home-container-geral{
+        padding: 24px 32px !important;
     }
 }
 
