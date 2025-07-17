@@ -97,5 +97,50 @@ class GeralModel
     
         return $loja;
     }
+
+  public function getCuponsDisponiveis(int $idUser): array|null
+  {
+    $sql = "
+    SELECT
+      c.id_cupom,
+      c.codigo_cupom,
+      c.descricao,
+      c.valor_desconto,
+      c.data_expiracao,
+      c.valor_pontos,
+      -- se o join encontrar registro, o usuário já tem o cupom
+      CASE WHEN uc.id_usuario IS NOT NULL THEN 1 ELSE 0 END AS adquirido
+    FROM cupom c
+    LEFT JOIN usuario_cupom uc
+      ON uc.id_cupom = c.id_cupom
+     AND uc.id_usuario = :idUser
+    WHERE
+      c.status_ativo = TRUE
+      AND c.data_expiracao >= CURDATE()
+    ORDER BY c.data_expiracao ASC;
+    ";
+
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->bindValue(':idUser', $idUser, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (!$rows) {
+        return null;
+    }
+
+    return array_map(function($r) {
+        return [
+            'id_cupom'      => (int)   $r['id_cupom'],
+            'codigo_cupom'  =>         $r['codigo_cupom'],
+            'valor_pontos'  => (int)   $r['valor_pontos'],
+            'descricao'     =>         $r['descricao'],
+            'valor_desconto'=> (float) $r['valor_desconto'],
+            'data_expiracao'=>         $r['data_expiracao'],
+            'adquirido'     => (bool)  $r['adquirido'],
+        ];
+    }, $rows);
+  }
+
     
 }  
