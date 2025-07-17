@@ -18,7 +18,7 @@
     <form class="form-suporte" method="post" action="">
       <div class="div-titulo-suporte">
         <h1 class="titulo-suporte">Suporte</h1>
-        <p class="texto-suporte">Preencha o formulário abaixo para entrar em contato com a equipe BuyAtHome
+        <p class="texto-suporte">Preencha o formulário abaixo para entrar em contato com a equipe BuyAtHome.
         </p>
       </div>
       <div class="div-input-assunto">

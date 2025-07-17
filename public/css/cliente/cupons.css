@@ -105,4 +105,8 @@
         padding: 32px 0px;
         padding-bottom: 120px;
     }
+
+    .footer {
+        display: none;
+    }
 }
