@@ -19,6 +19,8 @@ $routes = [
     '/perfil' => 'cliente/ClienteController@perfil',
     '/perfil-salvar' => 'cliente/ClienteController@salvarPerfil',
     '/toggleSeguirLoja' => 'cliente/ClienteController@toggleSeguirLoja',
+    '/cupons' => 'cliente/ClienteController@cupons',
+    '/comprar-cupom' => 'cliente/ClienteController@comprarCupom',
 
 ]
 
