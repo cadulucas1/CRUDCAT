@@ -16,12 +16,14 @@ require_once('./utils/head.php')
     ?>
 
     <main class="home-container-geral">
-        <div class="home-banner-container">
-            <picture>
-                <source srcset="./public/images/fotos/banner_mobile.png" media="(max-width: 425px)">
-                <img src="./public/images/fotos/banner_desktop.png">
-            </picture>
-        </div>
+        <a href="https://www.buyathomebrasil.com.br/" target="blank">
+            <div class="home-banner-container">
+                <picture>
+                    <source srcset="./public/images/fotos/banner_mobile.png" media="(max-width: 425px)">
+                    <img src="./public/images/fotos/banner_desktop.png">
+                </picture>
+            </div>
+        </a>
 
         <div id="main-content" class="main-content">
             <h2 class="title-store">
