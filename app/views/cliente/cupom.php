@@ -24,7 +24,7 @@
             <button class="btn-base" onclick="pag('tarefas')">Sem pontos? Resolva tarefas!</button>
         </div>
     </main>
-    
+    <script src="./app/components/js/footer.js" class="footer"></script>
 </body>
 <script src="./public/js/cliente/renderCupons.js"></script>
 </html>
