@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../../models/cliente/ClienteModel.php';
 require_once __DIR__ . '/../../models/cliente/UsuarioModel.php';
+require_once __DIR__ . '/../../models/geral/GeralModel.php';
 
 class ClienteController extends RenderView
 {
@@ -245,5 +246,93 @@ class ClienteController extends RenderView
             ]);
         }
     }
-    
+
+    public function cupons() {
+
+        $id_usuario = 1;
+
+        if ($id_usuario <= 0) {
+            header('Location: error');
+        }
+
+        $model = new GeralModel;
+
+        $cupons = $model->getCuponsDisponiveis($id_usuario);
+
+        $modelCliente = new ClienteModel;
+
+        $userPontos = $modelCliente->getPontosUser($id_usuario);
+
+        if (!empty($cupons)) {
+            $this->loadView('cliente/cupom', [
+                'cupons' => $cupons,
+                'pontos' => $userPontos
+            ]);
+        }
+    }
+
+    public function comprarCupom()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Método não permitido']);
+            exit;
+        }
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        $idUser  = isset($_GET['cliente']) ? (int) $_GET['cliente'] : 0;
+        $idCupom = isset($_GET['cupom'])   ? (int) $_GET['cupom']   : 0;
+
+        if ($idUser <= 0 || $idCupom <= 0) {
+            http_response_code(400);
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Parâmetros inválidos']);
+            exit;
+        }
+
+        $geralModel   = new GeralModel();
+        $clienteModel = new ClienteModel();
+
+        $pontosUser = $clienteModel->getPontosUser($idUser);
+        if ($pontosUser === null) {
+            http_response_code(500);
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Erro ao ler pontos do usuário']);
+            exit;
+        }
+
+        $custoCupom = $clienteModel->getValorPontosCupom($idCupom);
+        if ($custoCupom === null) {
+            http_response_code(404);
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Cupom não encontrado']);
+            exit;
+        }
+
+        if ($pontosUser < $custoCupom) {
+            http_response_code(400);
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Pontos insuficientes']);
+            exit;
+        }
+
+        try {
+            $pdo = $clienteModel->getConnection();         
+            $pdo->beginTransaction();
+
+            $novoSaldo = $pontosUser - $custoCupom;
+            $ok1 = $clienteModel->atualizarPontosUsuario($idUser, $novoSaldo);
+            $ok2 = $clienteModel->salvarUsuarioCupom($idUser, $idCupom);
+
+            if (!($ok1 && $ok2)) {
+                throw new Exception('Falha ao atualizar dados');
+            }
+
+            $pdo->commit();
+
+            echo json_encode(['sucesso' => true, 'mensagem' => 'Cupom resgatado!', 'saldo' => $novoSaldo]);
+        } catch (Exception $e) {
+            $pdo->rollBack();
+            http_response_code(500);
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Erro ao resgatar cupom']);
+        }
+        exit;
+    }
 }

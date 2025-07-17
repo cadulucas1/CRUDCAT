@@ -44,7 +44,7 @@
 
             <div class="perfil_loja_container_dados">
                 <img src="./public/images/icons/icon_localizacao.svg" class='perfil_loja_pfp_pic'>
-                <div class="perfil_loja_fonte_base"><?= $loja['endereco_loja'] ?></div>
+                <div class="perfil_loja_fonte_base"><?= $loja['endereco_loja'] . ', ' . $loja['num_endereco_loja'] ?></div>
             </div>
 
             <div class="perfil_loja_container_dados">
