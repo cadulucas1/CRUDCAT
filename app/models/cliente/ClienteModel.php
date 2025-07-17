@@ -165,8 +165,120 @@ class ClienteModel
         return $stmt->execute();
     }
 
+  public function listarTarefasComStatus(int $idUsuario): array {
+    $sql = "
+        SELECT 
+            t.id_tarefa,
+            t.nome_tarefa,
+            t.descricao,
+            t.pontos_tarefa,
+            tu.status_tarefa,
+            CASE 
+                WHEN tu.status_tarefa = TRUE THEN 'Concluída'
+                WHEN tu.status_tarefa = FALSE THEN 'Pendente'
+                ELSE 'Não iniciada'
+            END AS situacao
+        FROM tarefas t
+        LEFT JOIN tarefa_usuario tu 
+            ON t.id_tarefa = tu.id_tarefa 
+            AND tu.id_cliente = :idUsuario
+    ";
+
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public function getConnection(): PDO
     {
         return $this->db->getConnection();
     }
+
+  public function marcarTarefaComoRealizada(int $idUsuario, int $idTarefa): bool {
+    $conn = $this->db->getConnection();
+
+    try {
+        $conn->beginTransaction();
+
+        // Verifica se a tarefa já está marcada
+        $sqlVerifica = "
+            SELECT COUNT(*) FROM tarefa_usuario 
+            WHERE id_cliente = :idUsuario AND id_tarefa = :idTarefa
+        ";
+
+        $stmt = $conn->prepare($sqlVerifica);
+        $stmt->execute([
+            ':idUsuario' => $idUsuario,
+            ':idTarefa' => $idTarefa
+        ]);
+
+        $existe = $stmt->fetchColumn() > 0;
+
+        if ($existe) {
+            // Atualiza status caso já exista
+            $sqlUpdate = "
+                UPDATE tarefa_usuario 
+                SET status_tarefa = TRUE 
+                WHERE id_cliente = :idUsuario AND id_tarefa = :idTarefa
+            ";
+            $stmt = $conn->prepare($sqlUpdate);
+        } else {
+            // Insere novo registro
+            $sqlInsert = "
+                INSERT INTO tarefa_usuario (id_tarefa, id_cliente, status_tarefa)
+                VALUES (:idTarefa, :idUsuario, TRUE)
+            ";
+            $stmt = $conn->prepare($sqlInsert);
+        }
+
+        $stmt->execute([
+            ':idUsuario' => $idUsuario,
+            ':idTarefa' => $idTarefa
+        ]);
+
+        // Busca os pontos da tarefa
+        $sqlPontos = "SELECT pontos_tarefa FROM tarefas WHERE id_tarefa = :idTarefa";
+        $stmt = $conn->prepare($sqlPontos);
+        $stmt->execute([':idTarefa' => $idTarefa]);
+        $pontos = (int) $stmt->fetchColumn();
+
+        // Atualiza ou insere na tabela de pontos do usuário
+        $sqlVerificaPontos = "SELECT COUNT(*) FROM pontos_usuario WHERE id_usuario = :idUsuario";
+        $stmt = $conn->prepare($sqlVerificaPontos);
+        $stmt->execute([':idUsuario' => $idUsuario]);
+        $existePontos = $stmt->fetchColumn() > 0;
+
+        if ($existePontos) {
+            $sqlUpdatePontos = "
+                UPDATE pontos_usuario 
+                SET pontos_acumulados = pontos_acumulados + :pontos,
+                    data_atualizacao = NOW()
+                WHERE id_usuario = :idUsuario
+            ";
+            $stmt = $conn->prepare($sqlUpdatePontos);
+        } else {
+            $sqlInsertPontos = "
+                INSERT INTO pontos_usuario (id_usuario, pontos_acumulados)
+                VALUES (:idUsuario, :pontos)
+            ";
+            $stmt = $conn->prepare($sqlInsertPontos);
+        }
+
+        $stmt->execute([
+            ':idUsuario' => $idUsuario,
+            ':pontos' => $pontos
+        ]);
+
+        $conn->commit();
+        return true;
+
+    } catch (Exception $e) {
+        $conn->rollBack();
+        error_log('Erro ao marcar tarefa e atualizar pontos: ' . $e->getMessage());
+        return false;
+    }
+}
+
 }  
