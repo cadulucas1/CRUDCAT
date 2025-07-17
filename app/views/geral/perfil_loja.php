@@ -21,10 +21,6 @@
 
                 <div class="perfil_loja_container_buttons">
 
-                    <label class="perfil_loja_button_base">
-                        <img src="./public/images/icons/icon_mensagem.svg" alt="banner" class="perfil_loja_button_base_icon">
-                    </label>
-
                     <label class="perfil_loja_like-button">
                         <input type="checkbox" data-id-loja='<?= $loja['id_loja'] ?>' id="perfil_loja_heart" class="on" value="<?= $seguindo ?>" <?= $seguindo ? 'checked' : '' ?>>
                             <div class="perfil_loja_like">
