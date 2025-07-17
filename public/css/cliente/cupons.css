@@ -1,0 +1,108 @@
+.render-cupons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.card-cupom {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: transparent;
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px var(--AmareloMel) solid;
+    gap: 8px;
+}
+
+.card-cupom-codigo {
+    font-weight: bold;
+    color: var(--LaranjaEscuro);
+    align-items: center;
+}
+
+.pontos-user {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 16px;
+    h2 {
+        font-size: 32px;
+        color: var(--AmareloMel);
+    }
+    h3 {
+        color: var(--LaranjaEscuro);
+        font-size: 24px;
+        padding: 4px;
+        background-color: transparent;
+        border-radius: 5px;
+        border: 2px var(--LaranjaEscuro) solid;
+        width: fit-content;
+    }
+}
+
+
+.cupom-valor {
+    width: 100%;
+    background-color: var(--AmareloMel);
+    color: #fff;
+    padding: 4px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.disabled {
+    background-color: var(--CinzaClaro);
+    color: var(--CinzaEscuro) !important;
+    border: 2px var(--CinzaEscuro) dotted !important;
+    pointer-events: none !important;
+    :hover {
+        background-color: var(--CinzaClaro);
+        transform: none !important;
+        cursor: none !important;
+    }
+}
+
+
+.card-cupom-valor {
+    color: var(--LaranjaMaisFeliz);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 32px 30%;
+}
+
+@media (max-width: 768px) {
+    .render-cupons {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .btn-box {
+        padding: 32px 10%;
+    }
+}
+
+@media (max-width: 425px) {
+    main {
+        padding: 0 8px;
+    }
+    .render-cupons {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        padding: 0;
+    }
+
+    .btn-box {
+        padding: 32px 0px;
+        padding-bottom: 120px;
+    }
+}

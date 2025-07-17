@@ -65,11 +65,44 @@ CREATE TABLE IF NOT EXISTS lojas_seguidas (
 );
 
 
-CREATE TABLE suporte (
+CREATE TABLE IF NOT EXISTS suporte (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario BIGINT NOT NULL,
     assunto VARCHAR(255) NOT NULL,
     mensagem TEXT NOT NULL,
     data_envio DATETIME DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_suporte_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+-- Tabela de Cupons
+CREATE TABLE IF NOT EXISTS cupom (
+    id_cupom BIGINT AUTO_INCREMENT PRIMARY KEY,
+    codigo_cupom VARCHAR(50) NOT NULL UNIQUE,
+    valor_pontos INT NOT NULL DEFAULT 0,
+    descricao VARCHAR(255) NOT NULL,                         
+    valor_desconto DECIMAL(10,2) NOT NULL,                  
+    data_expiracao DATE NOT NULL,                            
+    status_ativo BOOLEAN NOT NULL DEFAULT TRUE,              
+    data_criacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP 
+);
+
+CREATE TABLE IF NOT EXISTS usuario_cupom (
+  id_usuario BIGINT NOT NULL,
+  id_cupom   BIGINT NOT NULL,
+  data_aquisicao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id_usuario, id_cupom),
+  CONSTRAINT fk_uc_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+  CONSTRAINT fk_uc_cupom    FOREIGN KEY (id_cupom)   REFERENCES cupom(id_cupom)
+);
+
+-- Tabela de Pontos por Usuário
+CREATE TABLE IF NOT EXISTS pontos_usuario (
+    id_pontos BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario BIGINT NOT NULL UNIQUE,
+    pontos_acumulados INT NOT NULL DEFAULT 0, 
+    data_atualizacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_pontos_usuario
+      FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+      ON UPDATE CASCADE
+      ON DELETE CASCADE
 );
