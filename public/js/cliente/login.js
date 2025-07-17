@@ -36,21 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const formData = new FormData();
       formData.append('email', email);
-      formData.append('password', senha);
+      formData.append('senha', senha);
 
-      const response = await fetch('controller/LoginController.php', {
+      const response = await fetch('/CRUDCAT/login', {
         method: 'POST',
         body: formData
       });
 
       const result = await response.json();
 
-      if (response.ok) {
-        // Login bem-sucedido → redireciona
-        window.location.href = 'painel.php';
+      if (result.success) {
+        window.location.href = result.redirect;
       } else {
-        // Erro retornado pelo backend
-        erroSenha.textContent = result.error || 'Erro ao fazer login.';
+        erroSenha.textContent = result.message || 'Erro ao fazer login.';
       }
     } catch (error) {
       erroSenha.textContent = 'Erro na conexão com o servidor.';

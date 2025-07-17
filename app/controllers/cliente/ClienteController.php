@@ -5,10 +5,56 @@ require_once __DIR__ . '/../../models/cliente/UsuarioModel.php';
 
 class ClienteController extends RenderView
 {
-    public function login()
-    {
+public function login()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        // Renderiza a view do formulário
         $this->loadView('cliente/login', []);
+        return;
     }
+
+    header('Content-Type: application/json');
+
+    $email = trim($_POST['email'] ?? '');
+    $senha = $_POST['senha'] ?? '';
+
+    // validação dos campos
+    if (empty($email) || empty($senha)) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Preencha todos os campos.',
+            'field' => empty($email) ? 'email' : 'senha'
+        ]);
+        exit;
+    }
+    // validação email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'E-mail inválido.',
+            'field' => 'email'
+        ]);
+        exit;
+    }
+
+    // busca usuário no banco
+    $model = new ClienteModel();
+    $usuario = $model->buscarPorEmail($email);
+
+    if (!$usuario || !password_verify($senha, $usuario['senha_usuario'])) {
+        echo json_encode(['success' => false, 'message' => 'E-mail ou senha inválidos.']);
+        exit;
+    }
+    // se login bem sucessedido inicia sessão 
+    session_start();
+    $_SESSION['usuario_id'] = $usuario['id_usuario'];
+    $_SESSION['usuario_nome'] = $usuario['nome_usuario'];
+
+    // retorna sucesso e redirecionamento
+    echo json_encode(['success' => true, 'redirect' => ' /CRUDCAT/perfil']);
+    exit;
+}
+
     // função de cadastrar usuario
     public function cadastro()
     {
@@ -106,7 +152,6 @@ class ClienteController extends RenderView
             'sucesso' => $sucesso
         ]);
     }
-
 
     public function perfil()
     {

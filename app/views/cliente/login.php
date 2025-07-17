@@ -14,18 +14,18 @@ require_once('./utils/head.php');
         include './app/components/php/topbar.php'; 
     ?>
     <div class="login-card">
-        <form id="formLogin" novalidate>
+        <form id="formLogin" action="" method="POST" novalidate>
             <h2 class="login-title">Entrar</h2>
 
             <div class="input-group">
                 <img src="./public/images/icons/icon_email.svg" alt="Ícone de email" class="input-icon">
-                <input type="email" id="loginEmail" placeholder="E-mail" required />
+                <input type="email" id="loginEmail" placeholder="E-mail" name = "email" required />
                 <span class="error-message" id="erro-loginEmail"></span>
             </div>
 
             <div class="input-group">
                 <img src="./public/images/icons/icon_senha.svg" alt="Ícone de senha" class="input-icon">
-                <input type="password" id="loginSenha" placeholder="Senha" required />
+                <input type="password" id="loginSenha" placeholder="Senha" name = "senha" required />
                 <span class="error-message" id="erro-loginSenha"></span>
             </div>
             <button type="submit" class="btn-base login-btn">

@@ -14,12 +14,11 @@ $routes = [
     '/search' => 'cliente/SearchController@search',
     '/suporte' => 'cliente/SuporteController@suporte',
     '/login' => 'cliente/ClienteController@login',
-    '/cadastro' => 'cliente/ClienteController@cadastro',
     '/getLojasSeguidas' => 'cliente/ClienteController@getLojasSeguidas',
     '/perfil' => 'cliente/ClienteController@perfil',
     '/perfil-salvar' => 'cliente/ClienteController@salvarPerfil',
     '/toggleSeguirLoja' => 'cliente/ClienteController@toggleSeguirLoja',
 
-]
+];
 
-?>
+?>  

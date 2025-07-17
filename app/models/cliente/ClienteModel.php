@@ -11,6 +11,18 @@ class ClienteModel
         $this->db->connect();
     }
 
+  // -- buscar por email para login
+    public function buscarPorEmail(string $email): ?array
+{
+    $sql = "SELECT * FROM usuario WHERE email_usuario = :email LIMIT 1";
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $usuario ?: null;
+}
 
   public function existeEmail(string $email): bool {
     $sql = "SELECT COUNT(*) FROM usuario WHERE email_usuario = :email";
