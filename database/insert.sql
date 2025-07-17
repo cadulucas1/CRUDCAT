@@ -3,7 +3,7 @@
 -- Insert de usuário
 INSERT INTO usuario (id_usuario, nome_usuario, email_usuario, senha_usuario, telefone_usuario)
 VALUES
-  (1, 'João Silva', 'joao.silva@example.com', '$2y$10$pYF7K2R9WWPMJqrfLbNaWuv6B6UCnjvYx0YyANPOBVzHAVnztzeGa', '67997866554');
+  (1, 'João Silva', 'joao.silva@example.com',  '$2y$10$pYF7K2R9WWPMJqrfLbNaWuv6B6UCnjvYx0YyANPOBVzHAVnztzeGa', '67997866554');
 
 -- Inserts de lojas
 INSERT INTO loja (id_loja, nome_loja, num_endereco_loja, endereco_loja, horario_abertura, horario_fechamento)
