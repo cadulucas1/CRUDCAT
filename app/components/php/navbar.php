@@ -21,7 +21,7 @@
 
     <div class="navbar_right">
         <?php foreach ($rotas as $rota => $icon): ?>
-            <button class="<?= 'navbar_button' . ($rotaAtual === $rota || ($rotaAtual === 'login' && $rota === 'perfil') || ($rotaAtual === 'cadastro' && $rota === 'perfil')? ' active' : '')?>">
+            <button class="<?= 'navbar_button' . ($rotaAtual === $rota || ($rotaAtual === 'login' && $rota === 'perfil') || ($rotaAtual === 'cadastro' && $rota === 'perfil') || ($rotaAtual === 'index.php' && $rota === '')? ' active' : '')?>">
                 <img 
                     src="./public/images/icons/<?= $icon ?>" 
                     alt="" 

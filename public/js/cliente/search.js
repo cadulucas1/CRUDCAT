@@ -1,51 +1,54 @@
 import renderLojaCard from '../../../app/components/js/storeCard.js';
 
-const lojas = [
-    {
-      nome_loja: 'Comper Itanhangá',
-      endereco_loja: 'Rua das das',
-      num_endereco_loja: '112',
-      status: 'Aberto',
-      horario_abertura: '12:00',
-      horario_fechamento: '22:00'
-    },
-    {
-      nome_loja: 'Supermercado Ponto Certo',
-      endereco_loja: 'Av. Afonso Pena',
-      num_endereco_loja: '1500',
-      status: 'Fechado',
-      horario_abertura: '08:00',
-      horario_fechamento: '18:00'
-    },
-    {
-      nome_loja: 'Mercado do Zé',
-      endereco_loja: 'Rua do Comércio',
-      num_endereco_loja: '305',
-      status: 'Aberto',
-      horario_abertura: '07:30',
-      horario_fechamento: '20:00'
-    },
-    {
-      nome_loja: 'Empório Central',
-      endereco_loja: 'Travessa Bonita',
-      num_endereco_loja: '87',
-      status: 'Fechado',
-      horario_abertura: '10:00',
-      horario_fechamento: '22:00'
-    },
-    {
-      nome_loja: 'Feira do Sul',
-      endereco_loja: 'Rua Esperança',
-      num_endereco_loja: '230',
-      status: 'Aberto',
-      horario_abertura: '09:00',
-      horario_fechamento: '21:00'
-    }
-  ];
-  
-document.addEventListener('DOMContentLoaded', () => {
-    const ul = document.querySelector('.search-results');
-    if (!ul) return;
+window.renderLoja = function (idUser, idLoja) {
+  window.location.href = `Loja?id_user=${idUser}&id_loja=${idLoja}`;
+};
 
-    ul.innerHTML = lojas.map(renderLojaCard).join('');
-})
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('search-lojas');
+  const ul = document.querySelector('.search-results');
+  const idUser = 1;
+
+  if (!input || !ul) return;
+
+  const buscarLojas = async (termo) => {
+    try {
+      const resp = await fetch(`search-lojas?query=${encodeURIComponent(termo)}`);
+      if (!resp.ok) throw new Error('Erro na requisição');
+      const lojas = await resp.json();
+
+      ul.innerHTML = lojas.length
+        ? lojas.map(renderLojaCard).join('')
+        : '<li>Nenhuma loja encontrada.</li>';
+
+    } catch (e) {
+      console.error('Erro ao buscar lojas:', e);
+      ul.innerHTML = '<li>Erro ao carregar resultados.</li>';
+    }
+  };
+
+  let timeout;
+  input.addEventListener('input', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      const termo = input.value.trim();
+      if (termo.length >= 2) {
+        buscarLojas(termo);
+      } else {
+        ul.innerHTML = '';
+      }
+    }, 300);
+  });
+
+  ul.addEventListener('click', (e) => {
+  const card = e.target.closest('.card-result');
+  if (!card) return;
+
+  const idLoja = card.dataset.idLoja;
+
+  if (!idLoja) return;
+
+  window.renderLoja(idUser, idLoja);
+});
+
+});
